@@ -271,6 +271,7 @@ window.onclick = function(event) {
     }
 }
 
+
 // Инициализация при загрузке страницы
 document.addEventListener('DOMContentLoaded', function() {
     // Привязываем обработчик к форме заказа из каталога
@@ -452,4 +453,4 @@ function closeCustomAlert() {
     const alertDiv = document.getElementById('customAlert');
     alertDiv.classList.remove('show');
     setTimeout(() => { alertDiv.style.display = 'none'; }, 400);
-} 
+}

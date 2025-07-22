@@ -1,3 +1,18 @@
+@import url('https://fonts.googleapis.com/css2?family=Russo+One&family=Open+Sans:wght@300;400;600;700&family=Caveat:wght@400;700&display=swap');
+/* Оптимизация: font-display: swap */
+@font-face {
+  font-family: 'Russo One';
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Open Sans';
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Caveat';
+  font-display: swap;
+}
+
 :root {
     --primary-dark: #2c1810;
     --primary-brown: #5d4037;
@@ -20,35 +35,32 @@
 }
 
 body {
-    font-family: 'Open Sans', sans-serif;
+    background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+    font-family: 'Open Sans', Arial, sans-serif;
+    color: #222;
     line-height: 1.7;
-    color: var(--text-dark);
-    background: linear-gradient(135deg, var(--background-warm) 0%, var(--background-light) 100%);
     min-height: 100vh;
     font-size: 1.08rem;
 }
 
 h1, h2, h3, h4, h5, h6 {
-    color: #3a1d0b;
-    letter-spacing: 0.5px;
-    text-shadow: none;
+    font-family: 'Russo One', Arial, sans-serif;
+    color: #2d3a4a;
+    margin-bottom: 12px;
 }
 
 h1 {
-    font-size: 2.5rem;
-    font-family: 'Russo One', sans-serif;
-    color: var(--accent-orange);
-    text-shadow: none;
+    font-size: 2.6em;
+    letter-spacing: 1px;
 }
 
 h2 {
-    font-size: 2rem;
-    color: var(--primary-brown);
+    font-size: 2em;
+    margin-top: 32px;
 }
 
 h3 {
-    font-size: 1.4rem;
-    color: var(--primary-brown);
+    font-size: 1.3em;
 }
 
 p, li, span, label, .catalog-features p, .catalog-specs span, .about-subtitle, .catalog-city, .catalog-date, .footer-section p {
@@ -92,13 +104,14 @@ a:hover, .main-nav a:hover, .footer-section a:hover {
 
 /* Header */
 header {
-    background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary-brown) 100%);
-    color: white;
+    background: linear-gradient(90deg, #2d3a4a 0%, #4e5d6c 100%);
+    color: #fff;
     padding: 1rem 0;
-    box-shadow: 0 4px 20px var(--shadow);
+    box-shadow: 0 4px 16px rgba(45,58,74,0.08);
     position: sticky;
     top: 0;
     z-index: 1000;
+    border-radius: 0 0 24px 24px;
 }
 
 .header-content {
@@ -106,6 +119,7 @@ header {
     justify-content: space-between;
     align-items: center;
     flex-wrap: wrap;
+    padding: 24px 0;
 }
 
 .logo {
@@ -194,24 +208,24 @@ header {
 .main-nav ul {
     display: flex;
     list-style: none;
-    gap: 2rem;
+    gap: 24px;
     margin: 0;
     padding: 0;
 }
 
 .main-nav a {
-    color: white;
+    color: #fff;
     text-decoration: none;
     font-weight: 600;
-    padding: 0.5rem 1rem;
-    border-radius: 25px;
-    transition: all 0.3s ease;
+    padding: 8px 16px;
+    border-radius: 8px;
+    transition: background 0.2s, color 0.2s;
 }
 
 .main-nav a:hover,
 .main-nav a.active {
-    background: var(--accent-orange);
-    color: white;
+    background: #fff;
+    color: #2d3a4a;
 }
 
 .contact-info {
@@ -267,13 +281,13 @@ header {
 
 /* Hero Section */
 .hero {
-    background: linear-gradient(rgba(44, 24, 16, 0.8), rgba(93, 64, 55, 0.7)), 
-                url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600"><rect fill="%23fff8f0" width="1200" height="600"/><circle cx="200" cy="150" r="80" fill="%23ff6b35" opacity="0.3"/><circle cx="800" cy="300" r="120" fill="%23ffc107" opacity="0.2"/><circle cx="1000" cy="100" r="60" fill="%23ff6b35" opacity="0.4"/></svg>');
-    background-size: cover;
-    background-position: center;
-    color: white;
-    padding: 4rem 0;
-    text-align: center;
+    background: linear-gradient(120deg, #ffecd2 0%, #fcb69f 100%);
+    border-radius: 24px;
+    box-shadow: 0 8px 32px rgba(252,182,159,0.10);
+    padding: 48px 0 32px 0;
+    margin-bottom: 32px;
+    position: relative;
+    overflow: hidden;
 }
 
 .hero-logo {
@@ -285,14 +299,9 @@ header {
 .hero-logo-img {
     width: 120px;
     height: 120px;
-    filter: drop-shadow(4px 4px 8px rgba(0,0,0,0.5));
-    animation: float 3s ease-in-out infinite;
-    background: transparent;
-    border-radius: 50%;
-    padding: 8px;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.10);
-    border: 2px solid #ff6b35;
-    object-fit: contain;
+    margin-bottom: 16px;
+    border: 4px solid #fff;
+    box-shadow: 0 4px 24px rgba(255,204,51,0.10);
 }
 
 @keyframes float {
@@ -326,21 +335,22 @@ header {
 }
 
 .cta-button {
-    background: linear-gradient(45deg, var(--accent-orange), #ff8a65);
-    color: white;
-    padding: 1rem 2rem;
+    background: linear-gradient(90deg, #ffb347 0%, #ffcc33 100%);
+    color: #2d3a4a;
+    font-size: 1.2em;
+    font-weight: bold;
     border: none;
-    border-radius: 50px;
-    font-size: 1.1rem;
-    font-weight: 600;
+    border-radius: 12px;
+    padding: 16px 32px;
+    box-shadow: 0 4px 16px rgba(255,204,51,0.15);
     cursor: pointer;
-    transition: all 0.3s ease;
-    box-shadow: 0 4px 15px var(--shadow-warm);
+    transition: transform 0.15s, box-shadow 0.15s, background 0.2s;
 }
 
 .cta-button:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 6px 20px var(--shadow-warm);
+    background: linear-gradient(90deg, #ffcc33 0%, #ffb347 100%);
+    transform: translateY(-2px) scale(1.04);
+    box-shadow: 0 8px 24px rgba(255,204,51,0.25);
 }
 
 /* Main Content */
@@ -490,22 +500,22 @@ header {
 }
 
 .submit-button {
-    background: linear-gradient(45deg, var(--primary-brown), var(--primary-dark));
-    color: white;
-    padding: 1rem 2rem;
+    background: linear-gradient(90deg, #ffb347 0%, #ffcc33 100%);
+    color: #2d3a4a;
+    font-size: 1.2em;
+    font-weight: bold;
     border: none;
-    border-radius: 50px;
-    font-size: 1.1rem;
-    font-weight: 600;
+    border-radius: 12px;
+    padding: 16px 32px;
+    box-shadow: 0 4px 16px rgba(255,204,51,0.15);
     cursor: pointer;
-    transition: all 0.3s ease;
-    width: 100%;
-    box-shadow: 0 4px 15px rgba(93, 64, 55, 0.4);
+    transition: transform 0.15s, box-shadow 0.15s, background 0.2s;
 }
 
 .submit-button:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(93, 64, 55, 0.6);
+    background: linear-gradient(90deg, #ffcc33 0%, #ffb347 100%);
+    transform: translateY(-2px) scale(1.04);
+    box-shadow: 0 8px 24px rgba(255,204,51,0.25);
 }
 
 /* Features Section */
@@ -986,10 +996,12 @@ header {
 
 /* Footer */
 footer {
-    background: var(--primary-dark);
-    color: white;
-    padding: 2rem 0;
-    margin-top: 3rem;
+    background: linear-gradient(90deg, #2d3a4a 0%, #4e5d6c 100%);
+    color: #fff;
+    padding: 32px 0 16px 0;
+    margin-top: 48px;
+    border-radius: 24px 24px 0 0;
+    box-shadow: 0 -4px 16px rgba(45,58,74,0.08);
 }
 
 .footer-content {
@@ -1751,7 +1763,8 @@ footer {
 }
 
 .gallery-item:hover img {
-    transform: scale(1.05);
+    transform: scale(1.05) rotate(-2deg);
+    box-shadow: 0 8px 32px rgba(45,58,74,0.18);
 }
 
 .unfocus-btn {
@@ -2066,4 +2079,57 @@ footer {
 }
 .custom-alert .alert-close:hover {
   color: #d13a00;
+}
+
+.about-map-container {
+    background: linear-gradient(135deg, white 0%, var(--background-warm) 100%);
+    padding: 2rem;
+    border-radius: 30px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    margin: 4rem auto;
+    text-align: center;
+    border: 3px solid var(--accent-orange);
+}
+
+.map-title {
+    font-family: 'Russo One', sans-serif;
+    font-size: 2.5rem;
+    color: var(--primary-brown);
+    margin-bottom: 1.5rem;
+}
+
+.map-title a {
+    color: inherit;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.map-title a:hover {
+    color: var(--accent-orange);
+}
+
+.about-map {
+    border-radius: 25px;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    line-height: 0; /* Убираем лишний отступ под картой */
+}
+
+/* Анимация появления секций */
+.tab-content, .features, .catalog-section, .about-section, .gallery-section, .calculator-section {
+    animation: fadeInUp 0.8s cubic-bezier(.23,1.01,.32,1) both;
+}
+@keyframes fadeInUp {
+    0% { opacity: 0; transform: translateY(40px); }
+    100% { opacity: 1; transform: none; }
+}
+
+/* Scrollbar стилизация */
+::-webkit-scrollbar {
+    width: 10px;
+    background: #f5f7fa;
+}
+::-webkit-scrollbar-thumb {
+    background: #ffcc33;
+    border-radius: 8px;
 } 

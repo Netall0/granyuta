@@ -18,12 +18,50 @@ const app = express();
 // Безопасность
 app.use(helmet({
     contentSecurityPolicy: {
+        useDefaults: false,
         directives: {
             defaultSrc: ["'self'"],
-            styleSrc: ["'self'", "'unsafe-inline'", "https://fonts.googleapis.com"],
-            fontSrc: ["'self'", "https://fonts.gstatic.com"],
-            imgSrc: ["'self'", "data:", "https:"],
-            scriptSrc: ["'self'"],
+            scriptSrc: [
+                "'self'", 
+                "'unsafe-inline'",
+                "https://api-maps.yandex.ru",
+                "https://yandex.st",
+                "https://*.yandex.ru",
+                "https://*.yandex.net"
+            ],
+            scriptSrcAttr: ["'self'", "'unsafe-inline'"],
+            styleSrc: [
+                "'self'", 
+                "'unsafe-inline'", 
+                "https://fonts.googleapis.com",
+                "https://yandex.st",
+                "https://*.yandex.ru"
+            ],
+            fontSrc: [
+                "'self'", 
+                "https://fonts.gstatic.com",
+                "https://yandex.st"
+            ],
+            imgSrc: [
+                "'self'", 
+                "data:", 
+                "https:",
+                "https://*.yandex.ru",
+                "https://*.yandex.net",
+                "https://core-renderer-tiles.maps.yandex.net"
+            ],
+            connectSrc: [
+                "'self'",
+                "https://api-maps.yandex.ru",
+                "https://*.yandex.ru",
+                "https://*.yandex.net"
+            ],
+            frameSrc: [
+                "'self'", 
+                "https://yandex.ru", 
+                "https://*.yandex.ru"
+            ],
+            workerSrc: ["'self'", "blob:"]
         },
     },
 }));
@@ -221,4 +259,4 @@ app.use((err, req, res, next) => {
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
     log('info', `Сервер запущен на порту ${PORT}`);
-}); 
+});
