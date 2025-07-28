@@ -459,3 +459,11 @@ function closeCustomAlert() {
     alertDiv.classList.remove('show');
     setTimeout(() => { alertDiv.style.display = 'none'; }, 400);
 }
+
+// Гарантированно навешиваем обработчик
+document.addEventListener('DOMContentLoaded', function() {
+  const burger = document.getElementById('burgerBtn');
+  if (burger) {
+    burger.addEventListener('click', toggleMobileMenu);
+  }
+});
