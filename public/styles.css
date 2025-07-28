@@ -1981,7 +1981,7 @@ footer {
         align-items: center;
         width: 44px;
         height: 44px;
-        background: rgba(255,255,255,0.2);
+        background: rgba(184, 16, 16, 0.2);
         border: 2px solid var(--text-light);
         border-radius: 8px;
         cursor: pointer;
