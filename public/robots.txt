@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://granyuta.ru/sitemap.xml 
