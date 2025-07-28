@@ -467,3 +467,39 @@ document.addEventListener('DOMContentLoaded', function() {
     burger.addEventListener('click', toggleMobileMenu);
   }
 });
+
+// Drawer-меню для мобильных
+document.addEventListener('DOMContentLoaded', function() {
+  const burger = document.getElementById('burgerBtn');
+  const drawer = document.getElementById('mobileDrawer');
+  if (!burger || !drawer) return;
+
+  const links = drawer.querySelectorAll('a');
+
+  function openDrawer() {
+    drawer.classList.add('open');
+    document.body.classList.add('drawer-open');
+  }
+  function closeDrawer() {
+    drawer.classList.remove('open');
+    document.body.classList.remove('drawer-open');
+  }
+
+  burger.addEventListener('click', function() {
+    if (drawer.classList.contains('open')) {
+      closeDrawer();
+    } else {
+      openDrawer();
+    }
+  });
+
+  // Закрывать drawer при клике по пункту меню
+  links.forEach(link => {
+    link.addEventListener('click', closeDrawer);
+  });
+
+  // Закрывать drawer по клику вне панели (если нужно, можно добавить overlay)
+  drawer.addEventListener('click', function(e) {
+    if (e.target === drawer) closeDrawer();
+  });
+});
