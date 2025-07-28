@@ -424,11 +424,16 @@ function unfocusImage(btn) {
 }
 
 // Мобильное меню бургер
+
 function toggleMobileMenu() {
     const nav = document.getElementById('mainNav');
+    const contacts = document.querySelector('.contact-info');
     nav.classList.toggle('open');
-    document.body.classList.toggle('menu-open');
-}
+    contacts.classList.toggle('open');
+    document.getElementById('burgerBtn').classList.toggle('open');
+  }
+  
+  // ... existing code ...
 
 // При клике по ссылке меню на мобильном — закрывать меню
 window.addEventListener('DOMContentLoaded', function() {

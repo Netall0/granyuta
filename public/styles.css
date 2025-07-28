@@ -1981,7 +1981,7 @@ footer {
         align-items: center;
         width: 44px;
         height: 44px;
-        background: rgba(184, 16, 16, 0.2);
+        background: rgba(255,255,255,0.2);
         border: 2px solid var(--text-light);
         border-radius: 8px;
         cursor: pointer;
@@ -2061,97 +2061,6 @@ footer {
         box-shadow: 0 4px 12px rgba(0,0,0,0.2);
     }
 }
-@media (min-width: 601px) {
-    .burger {
-        display: none !important;
-    }
-    .main-nav {
-        position: static !important;
-        display: flex !important;
-        height: auto !important;
-        width: auto !important;
-        background: none !important;
-        flex-direction: row !important;
-        padding-top: 0 !important;
-    }
-    .main-nav ul {
-        flex-direction: row !important;
-        gap: 2rem !important;
-        align-items: center !important;
-    }
-}
-
-/* --- Avito Reviews Block --- */
-.avito-reviews {
-  background: #fff8f0;
-  border-radius: 20px;
-  padding: 2rem;
-  margin: 2rem 0;
-  box-shadow: 0 4px 24px rgba(0,0,0,0.07);
-}
-.avito-reviews h2 {
-  font-family: 'Russo One', sans-serif;
-  margin-bottom: 1.5rem;
-}
-.review {
-  border-bottom: 1px solid #ffe0b2;
-  padding: 1rem 0;
-}
-.review:last-child { border-bottom: none; }
-.review-author {
-  font-weight: bold;
-  color: #b26a00;
-}
-.review-date {
-  font-size: 0.95em;
-  color: #888;
-  margin-bottom: 0.3em;
-}
-.review-rating {
-  color: #ff9800;
-  font-size: 1.2em;
-}
-.review-text {
-  margin: 0.5em 0 0.2em 0;
-}
-.review-product {
-  font-size: 0.95em;
-  color: #666;
-}
-.avito-link {
-  display: inline-block;
-  margin-top: 1.5em;
-  color: #1976d2;
-  text-decoration: underline;
-  font-weight: 600;
-}
-
-/* --- Кастомный красивый алерт --- */
-.custom-alert {
-  position: fixed;
-  top: 40px;
-  left: 50%;
-  transform: translateX(-50%);
-  background: linear-gradient(90deg, #fff6ee 0%, #ffe0c2 100%);
-  color: #7c4a03;
-  border-radius: 18px;
-  box-shadow: 0 8px 32px rgba(255,107,53,0.13);
-  padding: 1.3rem 2.2rem 1.3rem 1.3rem;
-  z-index: 9999;
-  display: flex;
-  align-items: center;
-  gap: 1.1rem;
-  font-size: 1.15rem;
-  font-family: 'Russo One', 'Open Sans', sans-serif;
-  opacity: 0;
-  pointer-events: none;
-  transition: opacity 0.4s cubic-bezier(.4,2,.6,1), top 0.4s cubic-bezier(.4,2,.6,1);
-}
-.custom-alert.show {
-  opacity: 1;
-  pointer-events: auto;
-  top: 60px;
-}
 .custom-alert .alert-icon {
   font-size: 2.1rem;
   margin-right: 0.5rem;
@@ -2222,3 +2131,85 @@ footer {
     background: var(--accent-gold);
     border-radius: 8px;
 }
+
+
+/* --- Мобильное меню и контакты --- */
+@media (max-width: 900px) {
+    .main-nav,
+    .contact-info {
+      display: none;
+      position: absolute;
+      top: 60px; /* высота шапки */
+      left: 0;
+      width: 100vw;
+      background: #fffbe6;
+      z-index: 100;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+      padding: 20px 0 10px 0;
+      flex-direction: column;
+      align-items: flex-start;
+      transition: max-height 0.3s, opacity 0.3s;
+      max-height: 0;
+      opacity: 0;
+      overflow: hidden;
+    }
+    .main-nav.open,
+    .contact-info.open {
+      display: flex;
+      max-height: 500px;
+      opacity: 1;
+    }
+    .burger {
+      display: flex !important;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      width: 40px;
+      height: 40px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      z-index: 200;
+    }
+    .burger span {
+      display: block;
+      width: 28px;
+      height: 4px;
+      margin: 4px 0;
+      background: #b48a00;
+      border-radius: 2px;
+      transition: 0.3s;
+    }
+    .burger.open span:nth-child(1) {
+      transform: translateY(8px) rotate(45deg);
+    }
+    .burger.open span:nth-child(2) {
+      opacity: 0;
+    }
+    .burger.open span:nth-child(3) {
+      transform: translateY(-8px) rotate(-45deg);
+    }
+    .header-content {
+      flex-wrap: wrap;
+      position: relative;
+    }
+  }
+  
+  /* На десктопе показываем всё как обычно */
+  @media (min-width: 901px) {
+    .main-nav,
+    .contact-info {
+      display: flex !important;
+      position: static;
+      max-height: none;
+      opacity: 1;
+      flex-direction: row;
+      align-items: center;
+      background: none;
+      box-shadow: none;
+      padding: 0;
+    }
+    .burger {
+      display: none !important;
+    }
+  }
