@@ -423,26 +423,96 @@ function unfocusImage(btn) {
     if(btn.previousElementSibling) btn.previousElementSibling.blur();
 }
 
-// Мобильное меню бургер
-
-function toggleMobileMenu() {
+// Простое мобильное меню
+document.addEventListener('DOMContentLoaded', function() {
+    const burger = document.getElementById('burgerBtn');
     const nav = document.getElementById('mainNav');
     const contacts = document.querySelector('.contact-info');
-    nav.classList.toggle('open');
-    contacts.classList.toggle('open');
-    document.getElementById('burgerBtn').classList.toggle('open');
-  }
-  
-  // ... existing code ...
-
-// При клике по ссылке меню на мобильном — закрывать меню
-window.addEventListener('DOMContentLoaded', function() {
-    document.querySelectorAll('.main-nav a').forEach(link => {
-        link.addEventListener('click', function() {
-            document.getElementById('mainNav').classList.remove('open');
-            document.body.classList.remove('menu-open');
+    
+    if (burger && nav && contacts) {
+        burger.addEventListener('click', function() {
+            nav.classList.toggle('open');
+            contacts.classList.toggle('open');
+            burger.classList.toggle('open');
         });
-    });
+        
+        // Закрывать при клике на пункты меню
+        const links = nav.querySelectorAll('a');
+        links.forEach(link => {
+            link.addEventListener('click', function() {
+                nav.classList.remove('open');
+                contacts.classList.remove('open');
+                burger.classList.remove('open');
+            });
+        });
+    }
+});
+
+// ПРИНУДИТЕЛЬНО УДАЛИТЬ DRAWER НА ПК
+document.addEventListener('DOMContentLoaded', function() {
+    const drawer = document.getElementById('mobileDrawer');
+    const burger = document.getElementById('burgerBtn');
+    
+    // Проверяем ширину экрана
+    function checkScreenSize() {
+        if (window.innerWidth >= 901) {
+            // На ПК - удаляем drawer
+            if (drawer) {
+                drawer.style.display = 'none';
+                drawer.style.visibility = 'hidden';
+                drawer.style.position = 'absolute';
+                drawer.style.left = '-9999px';
+                drawer.style.width = '0';
+                drawer.style.height = '0';
+                drawer.style.overflow = 'hidden';
+            }
+            if (burger) {
+                burger.style.display = 'none';
+            }
+        } else {
+            // На мобильных - показываем drawer
+            if (drawer) {
+                drawer.style.display = 'flex';
+                drawer.style.visibility = 'visible';
+                drawer.style.position = 'fixed';
+                drawer.style.left = '-100%';
+                drawer.style.width = '85vw';
+                drawer.style.maxWidth = '350px';
+                drawer.style.height = '100vh';
+                drawer.style.overflow = 'auto';
+            }
+            if (burger) {
+                burger.style.display = 'flex';
+            }
+        }
+    }
+    
+    // Проверяем при загрузке
+    checkScreenSize();
+    
+    // Проверяем при изменении размера окна
+    window.addEventListener('resize', checkScreenSize);
+    
+    // Мобильный drawer
+    if (burger && drawer) {
+        burger.addEventListener('click', function() {
+            if (window.innerWidth < 901) {
+                drawer.classList.toggle('open');
+                document.body.classList.toggle('drawer-open');
+            }
+        });
+        
+        // Закрывать при клике на пункты меню
+        const links = drawer.querySelectorAll('a');
+        links.forEach(link => {
+            link.addEventListener('click', function() {
+                if (window.innerWidth < 901) {
+                    drawer.classList.remove('open');
+                    document.body.classList.remove('drawer-open');
+                }
+            });
+        });
+    }
 });
 
 function showCustomAlert(message) {
@@ -466,40 +536,4 @@ document.addEventListener('DOMContentLoaded', function() {
   if (burger) {
     burger.addEventListener('click', toggleMobileMenu);
   }
-});
-
-// Drawer-меню для мобильных
-document.addEventListener('DOMContentLoaded', function() {
-  const burger = document.getElementById('burgerBtn');
-  const drawer = document.getElementById('mobileDrawer');
-  if (!burger || !drawer) return;
-
-  const links = drawer.querySelectorAll('a');
-
-  function openDrawer() {
-    drawer.classList.add('open');
-    document.body.classList.add('drawer-open');
-  }
-  function closeDrawer() {
-    drawer.classList.remove('open');
-    document.body.classList.remove('drawer-open');
-  }
-
-  burger.addEventListener('click', function() {
-    if (drawer.classList.contains('open')) {
-      closeDrawer();
-    } else {
-      openDrawer();
-    }
-  });
-
-  // Закрывать drawer при клике по пункту меню
-  links.forEach(link => {
-    link.addEventListener('click', closeDrawer);
-  });
-
-  // Закрывать drawer по клику вне панели (если нужно, можно добавить overlay)
-  drawer.addEventListener('click', function(e) {
-    if (e.target === drawer) closeDrawer();
-  });
 });
