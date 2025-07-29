@@ -2004,18 +2004,16 @@ footer {
     }
     
     .main-nav {
-        position: fixed;
-        top: 0;
-        left: 0;
+        position: static;
         width: 100vw;
-        height: 100vh;
+        height: auto;
         background: linear-gradient(135deg, var(--primary-brown) 0%, var(--accent-gold) 100%);
         z-index: 1001;
         display: none;
         flex-direction: column;
         justify-content: flex-start;
         align-items: flex-start;
-        padding-top: 80px;
+        padding-top: 0;
         padding-left: 0;
         transition: all 0.3s;
         backdrop-filter: blur(10px);
@@ -2134,189 +2132,7 @@ footer {
 
 
 /* --- КРАСИВЫЙ МОБИЛЬНЫЙ DRAWER --- */
-.mobile-drawer {
-    position: fixed !important;
-    top: 0 !important;
-    left: -100% !important;
-    width: 85vw !important;
-    max-width: 350px !important;
-    height: 100vh !important;
-    background: linear-gradient(180deg, #FFF8DC 0%, #F5F5DC 50%, #F0E68C 100%) !important;
-    z-index: 9999 !important;
-    box-shadow: 4px 0 25px rgba(139, 69, 19, 0.3) !important;
-    transition: left 0.4s cubic-bezier(0.4, 0, 0.2, 1) !important;
-    display: flex !important;
-    flex-direction: column !important;
-    overflow-y: auto !important;
-    border-right: 3px solid #DAA520 !important;
-}
-
-.mobile-drawer.open {
-    left: 0 !important;
-}
-
-.drawer-header {
-    display: flex !important;
-    justify-content: space-between !important;
-    align-items: center !important;
-    padding: 25px 20px !important;
-    background: linear-gradient(135deg, #DAA520 0%, #B8860B 100%) !important;
-    border-bottom: 3px solid #CD853F !important;
-    position: relative !important;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.1) !important;
-}
-
-.drawer-header h3 {
-    margin: 0 !important;
-    font-size: 1.5rem !important;
-    color: #8B4513 !important;
-    font-weight: 700 !important;
-    text-shadow: 1px 1px 2px rgba(255,255,255,0.5) !important;
-    font-family: 'Russo One', sans-serif !important;
-}
-
-.drawer-close {
-    background: rgba(255,255,255,0.9) !important;
-    border: 2px solid #DAA520 !important;
-    color: #8B4513 !important;
-    font-size: 1.5rem !important;
-    font-weight: bold !important;
-    cursor: pointer !important;
-    padding: 0 !important;
-    width: 32px !important;
-    height: 32px !important;
-    display: flex !important;
-    align-items: center !important;
-    justify-content: center !important;
-    border-radius: 50% !important;
-    transition: all 0.3s !important;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.2) !important;
-}
-
-.drawer-close:hover {
-    background: #DAA520 !important;
-    color: white !important;
-    transform: scale(1.1) !important;
-    box-shadow: 0 4px 12px rgba(218, 165, 32, 0.4) !important;
-}
-
-.drawer-nav {
-    flex: 1 !important;
-    padding: 20px 0 !important;
-}
-
-.drawer-nav ul {
-    list-style: none !important;
-    margin: 0 !important;
-    padding: 0 !important;
-}
-
-.drawer-nav li {
-    margin: 0 !important;
-}
-
-.drawer-nav a {
-    display: flex !important;
-    align-items: center !important;
-    padding: 18px 25px !important;
-    color: #8B4513 !important;
-    text-decoration: none !important;
-    font-size: 1.1rem !important;
-    font-weight: 600 !important;
-    border-bottom: 1px solid rgba(139, 69, 19, 0.1) !important;
-    transition: all 0.3s !important;
-    position: relative !important;
-    background: rgba(255,255,255,0.5) !important;
-    margin: 0 15px 5px 15px !important;
-    border-radius: 10px !important;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.05) !important;
-}
-
-.drawer-nav a::before {
-    content: '' !important;
-    position: absolute !important;
-    left: 0 !important;
-    top: 0 !important;
-    width: 0 !important;
-    height: 100% !important;
-    background: linear-gradient(90deg, rgba(218, 165, 32, 0.2) 0%, transparent 100%) !important;
-    transition: width 0.3s !important;
-    border-radius: 10px !important;
-}
-
-.drawer-nav a:hover::before,
-.drawer-nav a.active::before {
-    width: 100% !important;
-}
-
-.drawer-nav a:hover,
-.drawer-nav a.active {
-    background: rgba(218, 165, 32, 0.1) !important;
-    color: #D2691E !important;
-    transform: translateX(8px) !important;
-    box-shadow: 0 4px 15px rgba(218, 165, 32, 0.3) !important;
-    border-left: 4px solid #DAA520 !important;
-}
-
-.drawer-contacts {
-    padding: 25px 20px !important;
-    background: linear-gradient(135deg, #F5DEB3 0%, #DEB887 100%) !important;
-    border-top: 3px solid #DAA520 !important;
-    position: relative !important;
-    box-shadow: 0 -2px 10px rgba(0,0,0,0.1) !important;
-}
-
-.drawer-phone {
-    font-size: 1.2rem !important;
-    font-weight: bold !important;
-    color: #8B4513 !important;
-    margin-bottom: 20px !important;
-    text-shadow: 1px 1px 2px rgba(255,255,255,0.5) !important;
-    padding: 15px !important;
-    background: rgba(255,255,255,0.7) !important;
-    border-radius: 10px !important;
-    border-left: 4px solid #DAA520 !important;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.1) !important;
-}
-
-.drawer-social {
-    display: flex !important;
-    flex-direction: column !important;
-    gap: 12px !important;
-}
-
-.drawer-social a {
-    display: flex !important;
-    align-items: center !important;
-    gap: 15px !important;
-    color: #8B4513 !important;
-    text-decoration: none !important;
-    padding: 15px !important;
-    background: rgba(255,255,255,0.8) !important;
-    border-radius: 12px !important;
-    border: 2px solid rgba(218, 165, 32, 0.3) !important;
-    transition: all 0.3s !important;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.1) !important;
-}
-
-.drawer-social a:hover {
-    background: rgba(218, 165, 32, 0.1) !important;
-    transform: translateX(5px) !important;
-    box-shadow: 0 4px 15px rgba(218, 165, 32, 0.3) !important;
-    border-color: #DAA520 !important;
-}
-
-.drawer-social img {
-    width: 28px !important;
-    height: 28px !important;
-    filter: drop-shadow(1px 1px 2px rgba(0,0,0,0.2)) !important;
-}
-
-.drawer-social span {
-    font-weight: 600 !important;
-    font-size: 1rem !important;
-    color: #8B4513 !important;
-}
+/* УДАЛЯЮ все стили, связанные с .mobile-drawer, .drawer-header, .drawer-close, .drawer-nav, .drawer-contacts и т.д. */
 
 /* Затемнение фона при открытом drawer */
 .drawer-overlay {
