@@ -274,20 +274,21 @@ window.onclick = function(event) {
 
 // Функция для управления скроллом хедеров
 function initHeaderScroll() {
-    const fixedHeader = document.getElementById('fixedHeader');
+    const mainHeader = document.getElementById('mainHeader');
     const contactHeader = document.getElementById('contactHeader');
-    let lastScrollTop = 0;
     
-    if (!fixedHeader || !contactHeader) {
+    if (!mainHeader || !contactHeader) {
         console.log('Хедеры не найдены');
         return;
     }
+    
+    let lastScrollTop = 0;
     
     window.addEventListener('scroll', function() {
         const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
         
         // Показываем/скрываем контактный хедер при скролле
-        if (scrollTop > 100) {
+        if (scrollTop > 50) {
             contactHeader.classList.add('hidden');
         } else {
             contactHeader.classList.remove('hidden');
@@ -299,9 +300,22 @@ function initHeaderScroll() {
     console.log('Скролл хедеров инициализирован');
 }
 
+// Функция для управления бургер меню
+function initBurgerMenu() {
+    const burgerBtn = document.getElementById('burgerBtn');
+    const mainNav = document.getElementById('mainNav');
+    
+    if (burgerBtn && mainNav) {
+        burgerBtn.addEventListener('click', function() {
+            mainNav.classList.toggle('open');
+        });
+    }
+}
+
 // Инициализация при загрузке страницы
 document.addEventListener('DOMContentLoaded', function() {
     initHeaderScroll();
+    initBurgerMenu();
     // Привязываем обработчик к форме заказа из каталога
     const orderModalForm = document.getElementById('orderModalForm');
     if (orderModalForm) {
