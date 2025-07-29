@@ -39,6 +39,7 @@ body {
     line-height: 1.7;
     min-height: 100vh;
     font-size: 1.08rem;
+    padding-top: 64px; /* высота .fixed-header, скорректировать при необходимости */
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -2059,6 +2060,13 @@ footer {
         transform: translateX(5px);
         box-shadow: 0 4px 12px rgba(0,0,0,0.2);
     }
+    .hero {
+        border-radius: 0;
+        box-shadow: none;
+        margin-top: 0;
+        margin-bottom: 8px;
+        padding: 12px 0 12px 0;
+    }
 }
 .custom-alert .alert-icon {
   font-size: 2.1rem;
@@ -2191,4 +2199,67 @@ body.drawer-open {
 
 .drawer-nav a.active {
     animation: pulse 2s infinite;
+}
+
+.fixed-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background: linear-gradient(135deg, var(--primary-brown) 0%, var(--accent-gold) 100%);
+    z-index: 2000;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    padding: 0.5rem 0;
+}
+.fixed-header .header-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+}
+.fixed-header .logo {
+    font-size: 1.2rem;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+.fixed-header .logo-img {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: #fff;
+    padding: 4px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.10);
+    border: 2px solid #fff;
+}
+.fixed-header .logo-text {
+    color: #fff;
+    font-size: 1.1rem;
+    font-family: 'Russo One', sans-serif;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
+}
+.fixed-header .burger {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 40px;
+    height: 40px;
+    background: transparent;
+    border: 2px solid #fff;
+    border-radius: 8px;
+    cursor: pointer;
+    z-index: 200;
+    box-shadow: none;
+    position: static;
+}
+.fixed-header .burger span {
+    display: block;
+    width: 24px;
+    height: 3px;
+    background: #fff;
+    border-radius: 2px;
+    margin: 3px 0;
+    transition: 0.3s;
 }
