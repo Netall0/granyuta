@@ -39,7 +39,7 @@ body {
     line-height: 1.7;
     min-height: 100vh;
     font-size: 1.08rem;
-    padding-top: 64px; /* высота .fixed-header */
+    padding-top: 64px; /* высота .fixed-header, скорректировать при необходимости */
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -102,47 +102,15 @@ a:hover, .main-nav a:hover, .footer-section a:hover {
 }
 
 /* Header */
-.fixed-header {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    background: linear-gradient(135deg, var(--primary-brown) 0%, var(--accent-gold) 100%);
-    color: var(--text-light);
-    padding: 0.5rem 0;
-    box-shadow: 0 4px 16px var(--shadow);
-    z-index: 1001;
-    border-radius: 0 0 24px 24px;
-}
-
-.fixed-header .header-content {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-wrap: wrap;
-    padding: 12px 0;
-}
-
-.fixed-header .logo {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    font-family: 'Russo One', sans-serif;
-    font-size: 1.5rem;
-    color: var(--text-light);
-    text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
-}
-
-/* Обычный хедер с контактной информацией */
 header {
-    background: linear-gradient(135deg, var(--accent-gold) 0%, var(--accent-mint) 100%);
+    background: var(--neutral-cream);
     color: var(--text-dark);
     padding: 1rem 0;
     box-shadow: 0 4px 16px var(--shadow);
     position: relative;
+    top: 0;
     z-index: 1000;
     border-radius: 0 0 24px 24px;
-    margin-top: 0; /* убираем отступ, так как body уже имеет padding-top */
 }
 
 .header-content {
@@ -1907,35 +1875,9 @@ footer {
 }
 
 @media (max-width: 600px) {
-    /* Фиксированный хедер остается всегда видимым */
-    .fixed-header {
-        padding: 0.5rem 0;
-        height: 64px;
-    }
-    
-    .fixed-header .header-content {
-        padding: 8px 0;
-    }
-    
-    .fixed-header .logo {
-        font-size: 1.2rem;
-    }
-    
-    .fixed-header .logo-img {
-        width: 28px;
-        height: 28px;
-        padding: 4px;
-    }
-    
-    .fixed-header .logo-text {
-        font-size: 1.2rem;
-    }
-    
-    /* Обычный хедер с контактами */
     header {
         padding: 0.8rem 0;
-        background: linear-gradient(135deg, var(--accent-gold) 0%, var(--accent-mint) 100%);
-        margin-top: 0;
+        background: linear-gradient(135deg, var(--primary-brown) 0%, var(--accent-gold) 50%, var(--accent-mint) 100%);
     }
     
     .header-content {
@@ -2259,7 +2201,9 @@ body.drawer-open {
     animation: pulse 2s infinite;
 }
 
-/* Стили для фиксированного хедера уже определены выше */
+.fixed-header, header {
+    background: linear-gradient(135deg, var(--primary-brown) 0%, var(--accent-gold) 100%);
+}
 @media (min-width: 901px) {
     .fixed-header .burger {
         display: none !important;
