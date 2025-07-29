@@ -272,8 +272,36 @@ window.onclick = function(event) {
 }
 
 
+// Функция для управления скроллом хедеров
+function initHeaderScroll() {
+    const fixedHeader = document.getElementById('fixedHeader');
+    const contactHeader = document.getElementById('contactHeader');
+    let lastScrollTop = 0;
+    
+    if (!fixedHeader || !contactHeader) {
+        console.log('Хедеры не найдены');
+        return;
+    }
+    
+    window.addEventListener('scroll', function() {
+        const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+        
+        // Показываем/скрываем контактный хедер при скролле
+        if (scrollTop > 100) {
+            contactHeader.classList.add('hidden');
+        } else {
+            contactHeader.classList.remove('hidden');
+        }
+        
+        lastScrollTop = scrollTop;
+    });
+    
+    console.log('Скролл хедеров инициализирован');
+}
+
 // Инициализация при загрузке страницы
 document.addEventListener('DOMContentLoaded', function() {
+    initHeaderScroll();
     // Привязываем обработчик к форме заказа из каталога
     const orderModalForm = document.getElementById('orderModalForm');
     if (orderModalForm) {
@@ -464,4 +492,4 @@ document.addEventListener('DOMContentLoaded', function() {
   if (burger) {
     burger.addEventListener('click', toggleMobileMenu);
   }
-});
+});  
