@@ -332,52 +332,59 @@
       <span class="alert-message"></span>
       <button class="alert-close" onclick="closeCustomAlert()">&times;</button>
     </div>
-    <div class="fixed-header">
-        <div class="container">
-            <div class="header-content">
-                <div class="logo">
-                    <img src="icons/logo.png" alt="ГрАнь Уюта" class="logo-img">
-                    <span class="logo-text">ГрАнь Уюта</span>
+    
+    <!-- Новая структура хедеров -->
+    <div class="header-wrapper">
+        <!-- Фиксированный хедер -->
+        <div class="main-header" id="mainHeader">
+            <div class="container">
+                <div class="main-header-content">
+                    <div class="main-logo">
+                        <img src="icons/logo.png" alt="ГрАнь Уюта" class="main-logo-img">
+                        <span class="main-logo-text">ГрАнь Уюта</span>
+                    </div>
+                    <button class="burger" id="burgerBtn" aria-label="Меню">
+                        <span></span><span></span><span></span>
+                    </button>
+                    <nav class="main-nav" id="mainNav">
+                        <ul>
+                            <li><a href="#home" class="nav-link active" data-tab="home">Главная</a></li>
+                            <li><a href="#catalog" class="nav-link" data-tab="catalog">Каталог</a></li>
+                            <li><a href="#about" class="nav-link" data-tab="about">О нас</a></li>
+                            <li><a href="#gallery" class="nav-link" data-tab="gallery">Галерея</a></li>
+                            <li><a href="#calculator" class="nav-link" data-tab="calculator">Калькулятор</a></li>
+                        </ul>
+                    </nav>
                 </div>
-                <button class="burger" id="burgerBtn" aria-label="Меню">
-                    <span></span><span></span><span></span>
-                </button>
-                <nav class="main-nav" id="mainNav">
-                    <ul>
-                        <li><a href="#home" class="nav-link active" data-tab="home">Главная</a></li>
-                        <li><a href="#catalog" class="nav-link" data-tab="catalog">Каталог</a></li>
-                        <li><a href="#about" class="nav-link" data-tab="about">О нас</a></li>
-                        <li><a href="#gallery" class="nav-link" data-tab="gallery">Галерея</a></li>
-                        <li><a href="#calculator" class="nav-link" data-tab="calculator">Калькулятор</a></li>
-                    </ul>
-                </nav>
             </div>
         </div>
-    </div>
-    <header>
-        <div class="container">
-            <div class="header-content">
-                <div class="city-info">г. Новосибирск</div>
-                <div class="contact-info">
-                    <div class="phone">+7-913-770-56-56 Дмитрий<br></div>
-                    <div class="social-links">
-                        <a href="https://t.me/GranUyta" target="_blank" title="Telegram">
-                            <img src="icons/icons8-telegram.svg" alt="Telegram" class="social-icon">
-                            <span>Telegram</span>
-                        </a>
-                        <a href="https://vk.com/club230435323" target="_blank" title="VKontakte">
-                            <img src="icons/icons8-vk.svg" alt="VKontakte" class="social-icon">
-                            <span>VKontakte</span>
-                        </a>
-                        <a href="https://www.avito.ru/user/4b514b73c92f6d3e11ef61dc4215210d/profile?src=sharing" target="_blank" title="Avito">
-                            <img src="icons/avito-svgrepo-com.svg" alt="avito" class="social-icon">
-                            <span>Avito</span>
-                        </a>
+        
+        <!-- Контактный хедер -->
+        <div class="contact-header" id="contactHeader">
+            <div class="container">
+                <div class="contact-header-content">
+                    <div class="city-info">г. Новосибирск</div>
+                    <div class="contact-info">
+                        <div class="phone">+7-913-770-56-56 Дмитрий<br></div>
+                        <div class="social-links">
+                            <a href="https://t.me/GranUyta" target="_blank" title="Telegram">
+                                <img src="icons/icons8-telegram.svg" alt="Telegram" class="social-icon">
+                                <span>Telegram</span>
+                            </a>
+                            <a href="https://vk.com/club230435323" target="_blank" title="VKontakte">
+                                <img src="icons/icons8-vk.svg" alt="VKontakte" class="social-icon">
+                                <span>VKontakte</span>
+                            </a>
+                            <a href="https://www.avito.ru/user/4b514b73c92f6d3e11ef61dc4215210d/profile?src=sharing" target="_blank" title="Avito">
+                                <img src="icons/avito-svgrepo-com.svg" alt="avito" class="social-icon">
+                                <span>Avito</span>
+                            </a>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </header>
+    </div>
 
 <!-- УДАЛЯЮ блок <div class="mobile-drawer" id="mobileDrawer"> ... </div> полностью -->
 
