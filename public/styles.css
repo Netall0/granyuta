@@ -102,17 +102,21 @@ a:hover, .main-nav a:hover, .footer-section a:hover {
 }
 
 /* Header */
+/* Альтернативное решение для хедеров */
 .fixed-header {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    background: linear-gradient(135deg, var(--primary-brown) 0%, var(--accent-gold) 100%);
-    color: var(--text-light);
-    padding: 0.5rem 0;
-    box-shadow: 0 4px 16px var(--shadow);
-    z-index: 1001;
-    border-radius: 0 0 24px 24px;
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 100% !important;
+    background: linear-gradient(135deg, var(--primary-brown) 0%, var(--accent-gold) 100%) !important;
+    color: var(--text-light) !important;
+    padding: 0.5rem 0 !important;
+    box-shadow: 0 4px 16px var(--shadow) !important;
+    z-index: 1001 !important;
+    border-radius: 0 0 24px 24px !important;
+    height: 64px !important;
+    display: flex !important;
+    align-items: center !important;
 }
 
 .fixed-header .header-content {
@@ -133,17 +137,24 @@ a:hover, .main-nav a:hover, .footer-section a:hover {
     text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
 }
 
-/* Обычный хедер с контактной информацией */
-header {
-    background: linear-gradient(135deg, var(--accent-gold) 0%, var(--accent-mint) 100%);
-    color: var(--text-dark);
-    padding: 1rem 0;
-    box-shadow: 0 4px 16px var(--shadow);
-    position: relative;
-    z-index: 1000;
-    border-radius: 0 0 24px 24px;
-    margin-top: 0; /* убираем отступ, так как body уже имеет padding-top */
-    /* Этот хедер должен уходить при скролле */
+/* Контактный хедер с возможностью скрытия */
+.contact-header {
+    background: linear-gradient(135deg, var(--accent-gold) 0%, var(--accent-mint) 100%) !important;
+    color: var(--text-dark) !important;
+    padding: 1rem 0 !important;
+    box-shadow: 0 4px 16px var(--shadow) !important;
+    position: relative !important;
+    z-index: 1000 !important;
+    border-radius: 0 0 24px 24px !important;
+    margin-top: 0 !important;
+    transition: transform 0.3s ease !important;
+    /* По умолчанию видимый */
+    transform: translateY(0) !important;
+}
+
+/* Скрытый контактный хедер */
+.contact-header.hidden {
+    transform: translateY(-100%) !important;
 }
 
 .header-content {
