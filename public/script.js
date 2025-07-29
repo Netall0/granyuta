@@ -425,7 +425,7 @@ function unfocusImage(btn) {
 
 // Простое мобильное меню
 document.addEventListener('DOMContentLoaded', function() {
-    const burger = document.querySelector('.fixed-header .burger');
+    const burger = document.getElementById('burgerBtn');
     const nav = document.getElementById('mainNav');
     if (burger && nav) {
         burger.addEventListener('click', function() {
