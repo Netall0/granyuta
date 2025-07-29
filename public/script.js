@@ -277,6 +277,8 @@ function initHeaderScroll() {
     const mainHeader = document.getElementById('mainHeader');
     const contactHeader = document.getElementById('contactHeader');
     
+    console.log('Поиск хедеров:', { mainHeader, contactHeader });
+    
     if (!mainHeader || !contactHeader) {
         console.log('Хедеры не найдены');
         return;
@@ -287,11 +289,15 @@ function initHeaderScroll() {
     window.addEventListener('scroll', function() {
         const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
         
+        console.log('Скролл:', scrollTop);
+        
         // Показываем/скрываем контактный хедер при скролле
         if (scrollTop > 50) {
             contactHeader.classList.add('hidden');
+            console.log('Скрываем контактный хедер');
         } else {
             contactHeader.classList.remove('hidden');
+            console.log('Показываем контактный хедер');
         }
         
         lastScrollTop = scrollTop;
@@ -305,9 +311,12 @@ function initBurgerMenu() {
     const burgerBtn = document.getElementById('burgerBtn');
     const mainNav = document.getElementById('mainNav');
     
+    console.log('Поиск бургер меню:', { burgerBtn, mainNav });
+    
     if (burgerBtn && mainNav) {
         burgerBtn.addEventListener('click', function() {
             mainNav.classList.toggle('open');
+            console.log('Бургер меню переключено');
         });
     }
 }
