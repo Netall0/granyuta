@@ -425,23 +425,18 @@ function unfocusImage(btn) {
 
 // Простое мобильное меню
 document.addEventListener('DOMContentLoaded', function() {
-    const burger = document.getElementById('burgerBtn');
+    const burger = document.querySelector('.fixed-header .burger');
     const nav = document.getElementById('mainNav');
-    const contacts = document.querySelector('.contact-info');
-    
-    if (burger && nav && contacts) {
+    if (burger && nav) {
         burger.addEventListener('click', function() {
             nav.classList.toggle('open');
-            contacts.classList.toggle('open');
             burger.classList.toggle('open');
         });
-        
-        // Закрывать при клике на пункты меню
+        // Закрытие меню по клику на ссылку
         const links = nav.querySelectorAll('a');
         links.forEach(link => {
             link.addEventListener('click', function() {
                 nav.classList.remove('open');
-                contacts.classList.remove('open');
                 burger.classList.remove('open');
             });
         });
@@ -465,7 +460,7 @@ function closeCustomAlert() {
 
 // Гарантированно навешиваем обработчик
 document.addEventListener('DOMContentLoaded', function() {
-  const burger = document.getElementById('burgerBtn');
+  const burger = document.querySelector('.fixed-header .burger');
   if (burger) {
     burger.addEventListener('click', toggleMobileMenu);
   }
