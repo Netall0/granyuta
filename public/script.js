@@ -537,3 +537,4 @@ document.addEventListener('DOMContentLoaded', function() {
     burger.addEventListener('click', toggleMobileMenu);
   }
 });
+

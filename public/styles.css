@@ -106,7 +106,7 @@ header {
     color: var(--text-dark);
     padding: 1rem 0;
     box-shadow: 0 4px 16px var(--shadow);
-    position: sticky;
+    position: relative;
     top: 0;
     z-index: 1000;
     border-radius: 0 0 24px 24px;
@@ -286,7 +286,10 @@ header {
     margin-bottom: 32px;
     position: relative;
     overflow: hidden;
+    z-index: 1;
 }
+
+
 
 .hero-logo {
     margin-bottom: 2rem;
@@ -520,7 +523,11 @@ header {
 .features {
     background: var(--neutral-cream);
     padding: 3rem 0;
-    margin-top: 3rem;
+    margin-top: -2rem;
+    position: relative;
+    z-index: 10;
+    border-radius: 24px 24px 0 0;
+    box-shadow: 0 -8px 32px rgba(0,0,0,0.1);
 }
 
 .features h2 {
@@ -531,11 +538,380 @@ header {
     font-size: 2rem;
 }
 
-.features-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 2rem;
-}
+    /* Улучшенная features секция для мобильных */
+    .features {
+        padding: 2rem 0;
+        margin-top: -1rem;
+    }
+    
+    .features h2 {
+        font-size: 1.6rem;
+        margin-bottom: 1.5rem;
+    }
+    
+    .features-grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 1rem;
+        padding: 0 0.5rem;
+    }
+    
+    .feature-card {
+        padding: 1.5rem;
+        border-radius: 12px;
+    }
+    
+    .feature-icon {
+        font-size: 2.5rem;
+        margin-bottom: 0.8rem;
+    }
+    
+    .feature-card h3 {
+        font-size: 1.3rem;
+        margin-bottom: 0.8rem;
+    }
+    
+    .feature-card p {
+        font-size: 0.95rem;
+        line-height: 1.5;
+    }
+    
+    /* Улучшенный каталог для мобильных */
+    .catalog-section {
+        padding: 2rem 0;
+    }
+    
+    .catalog-section h1 {
+        font-size: 1.8rem;
+        margin-bottom: 1rem;
+    }
+    
+    .catalog-intro {
+        font-size: 0.95rem;
+        line-height: 1.5;
+        margin-bottom: 1.5rem;
+        padding: 0 0.5rem;
+    }
+    
+    .catalog-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+        padding: 0 0.5rem;
+    }
+    
+    .catalog-card {
+        border-radius: 12px;
+        margin-bottom: 1rem;
+    }
+    
+    .catalog-card-img {
+        height: 180px;
+    }
+    
+    .catalog-card-content {
+        padding: 1.2rem;
+    }
+    
+    .catalog-card-content h3 {
+        font-size: 1.3rem;
+        margin-bottom: 0.8rem;
+    }
+    
+    .catalog-card-content p {
+        font-size: 0.9rem;
+        line-height: 1.5;
+        margin-bottom: 1rem;
+    }
+    
+    .catalog-card-price {
+        font-size: 1.4rem;
+        margin-bottom: 1rem;
+    }
+    
+    .catalog-btn {
+        font-size: 0.95rem;
+        padding: 10px 20px;
+    }
+    
+    /* Улучшенный калькулятор для мобильных */
+    .calculator-section {
+        padding: 1.5rem;
+        border-radius: 16px;
+        margin: 1rem 0.5rem;
+    }
+    
+    .calculator-section h2 {
+        font-size: 1.6rem;
+        margin-bottom: 1.2rem;
+    }
+    
+    .calc-group {
+        margin-bottom: 1.2rem;
+    }
+    
+    .calc-group label {
+        font-size: 1rem;
+        margin-bottom: 0.5rem;
+    }
+    
+    .calc-group select,
+    .calc-group input[type="text"] {
+        font-size: 1rem;
+        padding: 10px 12px;
+        border-radius: 8px;
+    }
+    
+    .calc-checkboxes {
+        gap: 0.8rem;
+    }
+    
+    .calc-checkbox {
+        padding: 0.8rem;
+        border-radius: 8px;
+    }
+    
+    .price-display {
+        padding: 1.2rem;
+        border-radius: 12px;
+        margin-top: 1.5rem;
+    }
+    
+    .price-display h3 {
+        font-size: 1.2rem;
+        margin-bottom: 0.8rem;
+    }
+    
+    .price-amount {
+        font-size: 1.8rem;
+    }
+    
+    /* Улучшенная форма заказа для мобильных */
+    .order-section {
+        padding: 1.5rem;
+        border-radius: 16px;
+        margin: 1rem 0.5rem;
+    }
+    
+    .order-section h2 {
+        font-size: 1.6rem;
+        margin-bottom: 1.2rem;
+    }
+    
+    .form-group {
+        margin-bottom: 1.2rem;
+    }
+    
+    .form-group label {
+        font-size: 1rem;
+        margin-bottom: 0.5rem;
+    }
+    
+    .form-group input,
+    .form-group textarea {
+        font-size: 1rem;
+        padding: 10px 12px;
+        border-radius: 8px;
+    }
+    
+    .submit-button {
+        font-size: 1rem;
+        padding: 12px 24px;
+        border-radius: 10px;
+        width: 100%;
+    }
+    
+    /* Улучшенный footer для мобильных */
+    footer {
+        padding: 2rem 0 1rem 0;
+    }
+    
+    .footer-content {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+        text-align: center;
+    }
+    
+    .footer-section h3 {
+        font-size: 1.4rem;
+        margin-bottom: 1rem;
+    }
+    
+    .footer-section p {
+        font-size: 0.95rem;
+        line-height: 1.5;
+        margin-bottom: 0.8rem;
+    }
+    
+    .footer-logo-img {
+        width: 60px;
+        height: 60px;
+        margin-bottom: 1rem;
+    }
+    
+    .social-links-footer {
+        justify-content: center;
+        gap: 1rem;
+        margin-top: 1rem;
+    }
+    
+    .social-links-footer a {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+    }
+    
+    .social-links-footer .social-icon {
+        width: 20px !important;
+        height: 20px !important;
+    }
+    
+    /* Улучшенные модальные окна для мобильных */
+    .modal-content {
+        margin: 1rem;
+        padding: 1.5rem;
+        border-radius: 16px;
+        max-width: calc(100vw - 2rem);
+    }
+    
+    .modal-content h2 {
+        font-size: 1.4rem;
+        margin-bottom: 1rem;
+    }
+    
+    .order-info {
+        padding: 1rem;
+        border-radius: 12px;
+        margin-bottom: 1rem;
+    }
+    
+    .order-price {
+        font-size: 1.6rem;
+        margin-bottom: 1rem;
+    }
+    
+    .modal-buttons {
+        flex-direction: column;
+        gap: 0.8rem;
+    }
+    
+    .cancel-button {
+        width: 100%;
+        padding: 12px;
+        font-size: 1rem;
+    }
+    
+    /* Общие улучшения для мобильных */
+    .container {
+        padding: 0 15px;
+    }
+    
+    /* Улучшенная галерея для мобильных */
+    .gallery-grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+        padding: 0 0.5rem;
+    }
+    
+    .gallery-item {
+        border-radius: 12px;
+        overflow: hidden;
+    }
+    
+    .gallery-item img {
+        height: 200px;
+        object-fit: cover;
+    }
+    
+    /* Улучшенная секция "О нас" для мобильных */
+    .about-section {
+        padding: 2rem 0;
+    }
+    
+    .about-section h1 {
+        font-size: 1.8rem;
+        margin-bottom: 1rem;
+    }
+    
+    .about-content {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+    
+    .about-text h2 {
+        font-size: 1.4rem;
+        margin-bottom: 0.8rem;
+    }
+    
+    .about-text p {
+        font-size: 0.95rem;
+        line-height: 1.5;
+        margin-bottom: 1rem;
+    }
+    
+    .about-stats {
+        grid-template-columns: 1fr 1fr;
+        gap: 1rem;
+    }
+    
+    .stat-card {
+        padding: 1.2rem;
+        border-radius: 12px;
+    }
+    
+    .stat-number {
+        font-size: 1.8rem;
+    }
+    
+    .stat-label {
+        font-size: 0.9rem;
+    }
+    
+    /* Улучшенная навигация для мобильных */
+    .main-nav a {
+        font-size: 1.2rem;
+        padding: 1rem 1.2rem;
+        border-radius: 12px;
+        margin-bottom: 0.3rem;
+    }
+    
+    /* Улучшенный burger menu */
+    .burger {
+        width: 40px;
+        height: 40px;
+        top: 0.8rem;
+        right: 0.8rem;
+    }
+    
+    .burger span {
+        width: 20px;
+        height: 2px;
+    }
+    
+    /* Улучшенные отступы для всех секций */
+    .tab-content {
+        padding: 1rem 0;
+    }
+    
+    /* Улучшенная читаемость текста */
+    body {
+        font-size: 1rem;
+        line-height: 1.6;
+    }
+    
+    h1 {
+        font-size: 2rem;
+        line-height: 1.2;
+    }
+    
+    h2 {
+        font-size: 1.6rem;
+        line-height: 1.3;
+    }
+    
+    h3 {
+        font-size: 1.3rem;
+        line-height: 1.4;
+    }
 
 .feature-card {
     background: white;
@@ -1873,81 +2249,93 @@ footer {
 }
 
 @media (max-width: 600px) {
+    /* Улучшенный header для мобильных */
     header {
-        padding: 0.8rem 0;
+        padding: 0.6rem 0;
         background: linear-gradient(135deg, var(--primary-brown) 0%, var(--accent-gold) 50%, var(--accent-mint) 100%);
+        position: relative;
     }
     
     .header-content {
         flex-direction: column;
-        gap: 1rem;
+        gap: 0.8rem;
         text-align: center;
+        position: relative;
     }
     
     .logo {
-        font-size: 1.4rem;
-        margin-bottom: 0.5rem;
+        font-size: 1.2rem;
+        margin-bottom: 0.3rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.5rem;
     }
 
     .logo-img {
-        width: 35px;
-        height: 35px;
-        border: 3px solid var(--text-light);
-        box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+        width: 30px;
+        height: 30px;
+        border: 2px solid var(--text-light);
+        box-shadow: 0 2px 8px rgba(0,0,0,0.3);
     }
 
     .logo-text {
-        font-size: 1.4rem;
+        font-size: 1.2rem;
         color: var(--text-light);
-        text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
     }
     
     .city-info {
         color: var(--text-light);
         font-weight: 600;
-        font-size: 1.1rem;
+        font-size: 1rem;
         text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
-        margin-bottom: 0.5rem;
+        margin-bottom: 0.3rem;
     }
 
     .contact-info {
         flex-direction: column;
-        gap: 1rem;
+        gap: 0.8rem;
         width: 100%;
+        align-items: center;
     }
     
     .phone {
         color: var(--text-light);
-        font-size: 1.3rem;
+        font-size: 1.1rem;
         font-weight: 700;
-        text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
-        margin-bottom: 0.5rem;
+        text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
+        margin-bottom: 0.3rem;
+        text-align: center;
     }
     
     .social-links {
         display: flex;
         justify-content: center;
-        gap: 2rem;
+        gap: 0.3rem;
         flex-wrap: wrap;
-        padding: 1rem;
-        background: rgba(255,255,255,0.15);
-        border-radius: 20px;
-        backdrop-filter: blur(10px);
-        box-shadow: 0 4px 16px rgba(0,0,0,0.2);
+        padding: 0.2rem;
+        background: rgba(255,255,255,0.1);
+        border-radius: 8px;
+        backdrop-filter: blur(5px);
+        box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        max-width: 160px;
+        margin: 0 auto;
     }
     
     .social-links a {
         display: flex;
         flex-direction: column;
         align-items: center;
-        gap: 0.5rem;
-        padding: 1rem;
-        background: rgba(255,255,255,0.9);
-        border-radius: 15px;
+        gap: 0.1rem;
+        padding: 0.3rem;
+        background: rgba(255,255,255,0.8);
+        border-radius: 6px;
         text-decoration: none;
         transition: all 0.3s ease;
-        box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-        min-width: 80px;
+        box-shadow: 0 1px 4px rgba(0,0,0,0.1);
+        min-width: 45px;
+        max-width: 50px;
     }
     
     .social-links a:hover {
@@ -1957,21 +2345,48 @@ footer {
     }
     
     .social-icon {
-        width: 32px !important;
-        height: 32px !important;
+        width: 20px !important;
+        height: 20px !important;
         filter: drop-shadow(1px 1px 2px rgba(0,0,0,0.2));
     }
     
     .social-links a span {
-        font-size: 0.9rem;
-        font-weight: 600;
+        font-size: 0.6rem;
+        font-weight: 500;
         color: var(--primary-brown);
         text-align: center;
     }
 
+    /* Улучшенная hero секция для мобильных */
+    .hero {
+        padding: 2rem 0 1.5rem 0;
+        margin-bottom: 1.5rem;
+        border-radius: 16px;
+    }
+    
     .hero-logo-img {
-        width: 80px;
-        height: 80px;
+        width: 60px;
+        height: 60px;
+        margin-bottom: 1rem;
+    }
+    
+    .hero h1 {
+        font-size: 1.8rem;
+        line-height: 1.3;
+        margin-bottom: 0.8rem;
+    }
+    
+    .hero p {
+        font-size: 1rem;
+        line-height: 1.5;
+        margin-bottom: 1.5rem;
+        padding: 0 0.5rem;
+    }
+    
+    .cta-button {
+        font-size: 1rem;
+        padding: 12px 24px;
+        border-radius: 10px;
     }
     
     .burger {
