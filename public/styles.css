@@ -1997,16 +1997,19 @@ body.drawer-open {
     z-index: 1002;
     box-shadow: 0 2px 10px rgba(0,0,0,0.1);
     border-radius: 0 0 20px 20px;
-    padding: 0;
+    padding: 0 !important;
+    margin: 0 !important;
+    border: 2px dashed #f00 !important; /* временная рамка */
 }
 .fixed-header .header-content {
     display: flex;
     justify-content: space-between;
     align-items: center;
     height: 100%;
-    padding: 0 40px 0 32px;
-    max-width: 1400px;
-    margin: 0 auto;
+    padding: 0 16px !important;
+    margin: 0 !important;
+    min-width: 0;
+    box-sizing: border-box;
 }
 
 .logo {
@@ -2036,34 +2039,41 @@ body.drawer-open {
 header {
     background: linear-gradient(135deg, #DAA520 0%, #98FB98 100%);
     color: #2D1810;
-    padding: 18px 0 18px 0;
-    margin-top: 64px;
+    padding: 8px 0 !important;
+    margin-top: 64px !important;
     box-shadow: 0 4px 16px rgba(139, 69, 19, 0.1);
     border-radius: 0 0 20px 20px;
+    border: 2px dashed #00f !important; /* временная рамка */
 }
 header .header-content {
     display: flex;
     justify-content: space-between;
     align-items: center;
     flex-wrap: wrap;
-    gap: 32px;
-    max-width: 1400px;
-    margin: 0 auto;
-    padding: 0 40px 0 32px;
+    gap: 12px;
+    margin: 0 !important;
+    padding: 0 16px !important;
+    min-width: 0;
+    box-sizing: border-box;
 }
 .city-info {
-    margin-right: 32px;
-    min-width: 120px;
+    margin: 0 !important;
+    min-width: 0;
+    padding: 0 !important;
 }
 .contact-info {
     display: flex;
     flex-direction: row;
-    gap: 32px;
+    gap: 12px;
     align-items: center;
+    margin: 0 !important;
+    padding: 0 !important;
 }
 .phone {
-    min-width: 220px;
+    min-width: 0;
     text-align: right;
+    margin: 0 !important;
+    padding: 0 !important;
 }
 .social-links {
     gap: 12px;
@@ -2174,48 +2184,7 @@ body {
 }
 
 @media (max-width: 600px) {
-    .fixed-header {
-        height: 56px;
-        padding: 0.5rem 0;
-    }
-    .fixed-header .header-content {
-        padding: 8px 0;
-    }
-    .logo-img {
-        width: 28px;
-        height: 28px;
-        padding: 4px;
-    }
-    .logo-text {
-        font-size: 1.2rem;
-    }
     header {
-        padding: 0.8rem 0;
-        margin-top: 0;
-    }
-    header .header-content {
-        flex-direction: column;
-        gap: 1rem;
-        text-align: center;
-    }
-    .city-info {
-        font-size: 1rem;
-    }
-    .phone {
-        font-size: 1.1rem;
-    }
-    .social-links a {
-        min-width: 60px;
-        padding: 10px;
-    }
-    .social-icon {
-        width: 24px;
-        height: 24px;
-    }
-    .social-links a span {
-        font-size: 0.8rem;
-    }
-    header .header-content {
         display: none !important;
     }
 }
