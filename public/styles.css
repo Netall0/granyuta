@@ -1997,19 +1997,19 @@ body.drawer-open {
     z-index: 1002;
     box-shadow: 0 2px 10px rgba(0,0,0,0.1);
     border-radius: 0 0 20px 20px;
-    padding: 0 !important;
-    margin: 0 !important;
-    border: 2px dashed #f00 !important; /* временная рамка */
+    padding: 0;
+    margin: 0;
 }
 .fixed-header .header-content {
     display: flex;
     justify-content: space-between;
     align-items: center;
     height: 100%;
-    padding: 0 16px !important;
-    margin: 0 !important;
-    min-width: 0;
+    padding: 0 32px;
+    margin: 0;
+    max-width: 1400px;
     box-sizing: border-box;
+    width: 100%;
 }
 
 .logo {
@@ -2039,41 +2039,36 @@ body.drawer-open {
 header {
     background: linear-gradient(135deg, #DAA520 0%, #98FB98 100%);
     color: #2D1810;
-    padding: 8px 0 !important;
-    margin-top: 64px !important;
+    padding: 16px 0;
+    margin-top: 64px;
     box-shadow: 0 4px 16px rgba(139, 69, 19, 0.1);
     border-radius: 0 0 20px 20px;
-    border: 2px dashed #00f !important; /* временная рамка */
 }
 header .header-content {
     display: flex;
     justify-content: space-between;
     align-items: center;
     flex-wrap: wrap;
-    gap: 12px;
-    margin: 0 !important;
-    padding: 0 16px !important;
-    min-width: 0;
+    gap: 24px;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 32px;
+    width: 100%;
     box-sizing: border-box;
 }
 .city-info {
-    margin: 0 !important;
-    min-width: 0;
-    padding: 0 !important;
+    margin: 0;
+    min-width: 120px;
 }
 .contact-info {
     display: flex;
     flex-direction: row;
-    gap: 12px;
+    gap: 24px;
     align-items: center;
-    margin: 0 !important;
-    padding: 0 !important;
 }
 .phone {
-    min-width: 0;
+    min-width: 180px;
     text-align: right;
-    margin: 0 !important;
-    padding: 0 !important;
 }
 .social-links {
     gap: 12px;
@@ -2186,5 +2181,14 @@ body {
 @media (max-width: 600px) {
     header {
         display: none !important;
+    }
+}
+
+@media (max-width: 900px) {
+    header {
+        display: none !important;
+    }
+    .fixed-header .header-content {
+        padding: 0 12px;
     }
 }
