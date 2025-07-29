@@ -106,7 +106,7 @@ header {
     color: var(--text-dark);
     padding: 1rem 0;
     box-shadow: 0 4px 16px var(--shadow);
-    position: sticky;
+    position: relative;
     top: 0;
     z-index: 1000;
     border-radius: 0 0 24px 24px;
