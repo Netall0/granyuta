@@ -1075,52 +1075,71 @@ footer {
 
 /* Responsive Design */
 @media (max-width: 768px) {
+    body {
+        font-size: 1rem;
+    }
+    
+    .contact-header {
+        padding: 18px 0;
+    }
+    
+    .contact-header-content {
+        flex-direction: column;
+        text-align: center;
+        gap: 15px;
+        max-width: 90%;
+    }
+    
+    .city-info {
+        font-size: 1rem;
+        margin-bottom: 5px;
+        order: 1;
+    }
+    
+    .contact-info {
+        order: 2;
+        gap: 10px;
+    }
+    
+    .phone {
+        font-size: 1.2rem;
+        margin-bottom: 10px;
+    }
+    
+    .social-links {
+        gap: 10px;
+        justify-content: center;
+        flex-wrap: wrap;
+        max-width: 100%;
+    }
+    
+    .social-links a {
+        min-width: 65px;
+        padding: 10px 8px;
+    }
+    
+    .social-icon {
+        width: 26px;
+        height: 26px;
+    }
+    
+    .social-links a span {
+        font-size: 0.8rem;
+    }
+    
+    .hero-logo-img {
+        width: 90px;
+        height: 90px;
+    }
+    
+    .hero h1 {
+        font-size: 2.2rem;
+    }
+    
     .main-content {
         grid-template-columns: 1fr;
         gap: 2rem;
-    }
-
-    .hero h1 {
-        font-size: 2rem;
-    }
-
-    .contact-info {
-        flex-direction: column;
-        gap: 1rem;
-    }
-
-    .header-content {
-        text-align: center;
-        flex-direction: column;
-        gap: 1rem;
-    }
-
-    .main-nav ul {
-        flex-wrap: wrap;
-        justify-content: center;
-    }
-
-    .about-content {
-        grid-template-columns: 1fr;
-        gap: 2rem;
-    }
-
-    .about-stats {
-        grid-template-columns: 1fr 1fr;
-    }
-
-    .works-filter {
-        flex-direction: column;
-        align-items: center;
-    }
-
-    .works-grid {
-        grid-template-columns: 1fr;
-    }
-
-    .footer-content {
-        grid-template-columns: 1fr;
-        text-align: center;
+        padding: 2rem 0;
     }
 }
 
@@ -2257,6 +2276,8 @@ body.drawer-open {
         box-shadow: 0 4px 12px rgba(245, 158, 11, 0.3) !important;
     }
 }
+
+/* Навигация для планшетов и мобильных */
 @media (max-width: 1024px) {
     .main-nav {
         display: none;
@@ -2344,7 +2365,21 @@ body.drawer-open {
         margin: 2px 0;
         transition: all 0.3s;
         box-shadow: 0 1px 2px rgba(0,0,0,0.2);
-    }}
+    }
+    
+    /* Анимация бургера */
+    .burger.active span:nth-child(1) {
+        transform: rotate(45deg) translate(6px, 6px);
+    }
+    
+    .burger.active span:nth-child(2) {
+        opacity: 0;
+    }
+    
+    .burger.active span:nth-child(3) {
+        transform: rotate(-45deg) translate(6px, -6px);
+    }
+}
 
 /* Новая структура хедеров - полная перезапись */
 .header-wrapper {
@@ -2404,7 +2439,7 @@ body.drawer-open {
 .contact-header {
     background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
     color: #1f2937;
-    padding: 25px 0;
+    padding: 20px 0;
     margin-top: 64px;
     box-shadow: 0 4px 16px rgba(245, 158, 11, 0.3);
     border-radius: 0 0 20px 20px;
@@ -2418,40 +2453,43 @@ body.drawer-open {
 
 .contact-header-content {
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
     flex-wrap: wrap;
-    gap: 25px;
-    max-width: 1200px;
+    gap: 40px;
+    max-width: 1000px;
     margin: 0 auto;
     padding: 0 20px;
 }
 
 .city-info {
-    color: #1f2937; /* Темный цвет вместо белого */
+    color: #1f2937;
     font-weight: 700;
     font-size: 1.1rem;
-    text-shadow: 1px 1px 2px rgba(255,255,255,0.5); /* Светлая тень для контраста */
+    text-shadow: 1px 1px 2px rgba(255,255,255,0.5);
+    order: 1;
 }
 
 .contact-info {
     display: flex;
     flex-direction: column;
-    gap: 15px;
+    gap: 12px;
     align-items: center;
+    order: 2;
 }
 
 .phone {
-    color: #1f2937; /* Темный цвет */
+    color: #1f2937;
     font-size: 1.3rem;
     font-weight: 800;
     text-shadow: 1px 1px 2px rgba(255,255,255,0.5);
     text-align: center;
+    margin-bottom: 8px;
 }
 
 .social-links {
     display: flex;
-    gap: 15px;
+    gap: 12px;
     flex-wrap: wrap;
     justify-content: center;
 }
@@ -2662,23 +2700,46 @@ body {
     
     .contact-header-content {
         padding: 0 15px;
+        gap: 12px;
+        max-width: 95%;
     }
     
     .city-info {
         font-size: 0.95rem;
     }
-}
+    
+    .phone {
+        font-size: 1.1rem;
+    }
+    
+    .social-links {
+        gap: 8px;
+    }
+    
+    .social-links a {
+        min-width: 60px;
+        padding: 8px 6px;
+    }
+    
+    .social-links a span {
+        font-size: 0.75rem;
+    }}
 
 /* Медиа-запросы для мобильных устройств */
 @media (max-width: 1024px) and (min-width: 769px) {
     .contact-header-content {
-        flex-direction: column;
+        gap: 30px;
+        max-width: 800px;
+    }
+    
+    .city-info {
+        order: 1;
         text-align: center;
-        gap: 20px;
     }
     
     .contact-info {
-        width: 100%;
+        order: 2;
+        width: auto;
     }
     
     .social-links {
