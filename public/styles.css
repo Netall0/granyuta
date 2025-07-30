@@ -14,16 +14,16 @@
 }
 
 :root {
-    --primary-brown: #8B4513;
-    --accent-gold: #DAA520;
-    --accent-mint: #98FB98;
-    --neutral-cream: #F5F5DC;
-    --text-dark: #2D1810;
-    --text-light: #FFFFFF;
-    --success-green: #4caf50;
-    --shadow: rgba(139, 69, 19, 0.2);
-    --shadow-warm: rgba(218, 165, 32, 0.2);
-    --shadow-mint: rgba(152, 251, 152, 0.2);
+    --primary-brown: #2d4a22;      /* темно-зеленый вместо коричневого */
+    --accent-gold: #f59e0b;        /* яркий золотой */
+    --accent-mint: #10b981;        /* мятно-зеленый */
+    --neutral-cream: #f8fafc;      /* светлый крем */
+    --text-dark: #1f2937;          /* темно-серый для текста */
+    --text-light: #ffffff;         /* белый текст */
+    --success-green: #059669;      /* зеленый успех */
+    --shadow: rgba(45, 74, 34, 0.15);
+    --shadow-warm: rgba(245, 158, 11, 0.25);
+    --shadow-mint: rgba(16, 185, 129, 0.2);
 }
 
 * {
@@ -101,26 +101,7 @@ a:hover, .main-nav a:hover, .footer-section a:hover {
     padding: 0 20px;
 }
 
-/* Header */
-/* Старые стили хедеров удалены - используем новую структуру */
-
-/* Старые стили контактного хедера удалены - используем новую структуру */
-
-/* Старые стили header-content и logo удалены - используем новую структуру */
-
-/* Вариант 1 (базовый, белый круг)
-/*
-.logo-img, .hero-logo-img, .footer-logo-img, .modal-logo {
-    border-radius: 50%;
-    background: white;
-    padding: 8px;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.10);
-    border: 2px solid #ff6b35;
-    object-fit: contain;
-}
-*/
-
-/* Вариант 2: Градиентный круглый фон */
+/* Логотипы - Вариант 2: Градиентный круглый фон */
 .logo-img {
     width: 40px;
     height: 40px;
@@ -190,9 +171,12 @@ a:hover, .main-nav a:hover, .footer-section a:hover {
 }
 
 .main-nav a {
-    color: var(--text-dark);
+    color: var(--text-light) !important;
+    background: rgba(255,255,255,0.15) !important;
+    border: 2px solid transparent !important;
+    font-weight: 600 !important;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.5) !important;
     text-decoration: none;
-    font-weight: 600;
     padding: 8px 16px;
     border-radius: 8px;
     transition: background 0.2s, color 0.2s;
@@ -200,8 +184,10 @@ a:hover, .main-nav a:hover, .footer-section a:hover {
 
 .main-nav a:hover,
 .main-nav a.active {
-    background: var(--primary-brown);
-    color: var(--neutral-cream);
+    background: rgba(255,255,255,0.25) !important;
+    border-color: var(--text-light) !important;
+    color: var(--text-light) !important;
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.7) !important;
 }
 
 .contact-info {
@@ -257,12 +243,12 @@ a:hover, .main-nav a:hover, .footer-section a:hover {
 
 /* Hero Section */
 .hero {
-    background: linear-gradient(120deg, var(--primary-brown) 0%, var(--accent-gold) 100%);
+    background: linear-gradient(120deg, var(--primary-brown) 0%, var(--accent-gold) 100%) !important;
     border-radius: 24px;
-    box-shadow: 0 2px 8px var(--shadow); /* был 0 8px 32px */
-    padding: 24px 0 24px 0; /* было 48px 0 32px 0 */
+    box-shadow: 0 2px 8px var(--shadow);
+    padding: 24px 0 24px 0;
     margin-top: 12px;
-    margin-bottom: 16px; /* было 32px */
+    margin-bottom: 16px;
     position: relative;
     overflow: hidden;
 }
@@ -287,8 +273,8 @@ a:hover, .main-nav a:hover, .footer-section a:hover {
 }
 
 .hero h1, .hero p {
-    color: var(--text-light);
-    text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+    color: var(--text-light) !important;
+    text-shadow: 2px 2px 6px rgba(0,0,0,0.7) !important;
     background: none;
     border-radius: 0;
     padding: 0;
@@ -299,7 +285,7 @@ a:hover, .main-nav a:hover, .footer-section a:hover {
 .hero h1 {
     font-size: 3rem;
     margin-bottom: 1rem;
-    text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+    text-shadow: 2px 2px 6px rgba(0,0,0,0.7);
 }
 
 .hero p {
@@ -308,14 +294,14 @@ a:hover, .main-nav a:hover, .footer-section a:hover {
     max-width: 600px;
     margin-left: auto;
     margin-right: auto;
-    text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+    text-shadow: 2px 2px 6px rgba(0,0,0,0.7);
 }
 
 .cta-button {
-    background: linear-gradient(90deg, var(--accent-mint) 0%, var(--primary-brown) 100%);
-    color: var(--text-light);
+    background: linear-gradient(90deg, var(--accent-mint) 0%, var(--primary-brown) 100%) !important;
+    color: var(--text-light) !important;
+    font-weight: 700 !important;
     font-size: 1.2em;
-    font-weight: bold;
     border: none;
     border-radius: 12px;
     padding: 16px 32px;
@@ -325,7 +311,7 @@ a:hover, .main-nav a:hover, .footer-section a:hover {
 }
 
 .cta-button:hover {
-    background: linear-gradient(90deg, var(--accent-gold) 0%, var(--primary-brown) 100%);
+    background: linear-gradient(90deg, var(--accent-gold) 0%, var(--primary-brown) 100%) !important;
     transform: translateY(-2px) scale(1.04);
     box-shadow: 0 8px 24px var(--shadow-warm);
 }
@@ -842,7 +828,7 @@ a:hover, .main-nav a:hover, .footer-section a:hover {
 .catalog-card-content h3 {
     margin: 0 0 8px 0;
     font-size: 1.2rem;
-    color: var(--primary-brown, #7c4a03);
+    color: var(--primary-brown);
     font-family: 'Russo One', sans-serif;
 }
 
@@ -910,15 +896,15 @@ a:hover, .main-nav a:hover, .footer-section a:hover {
 }
 
 .catalog-specs span {
-    background: linear-gradient(135deg, var(--background-warm) 0%, #fff5e6 100%);
+    background: linear-gradient(135deg, var(--neutral-cream) 0%, #fff5e6 100%);
     padding: 0.4rem 1rem;
     border-radius: 15px;
     font-size: 0.95rem;
     font-weight: 600;
     color: var(--primary-brown);
-    border: 1px solid rgba(255, 107, 53, 0.13);
+    border: 1px solid var(--accent-gold);
     text-align: center;
-    box-shadow: 0 1px 4px rgba(255,107,53,0.04);
+    box-shadow: 0 1px 4px rgba(245,158,11,0.04);
 }
 
 .catalog-features {
@@ -1919,6 +1905,7 @@ footer {
     header .city-info {
         color: var(--text-light);
         font-weight: 600;
+        padding: 12;
         font-size: 1.1rem;
         text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
         margin-bottom: 0.5rem;
@@ -2314,250 +2301,257 @@ body.drawer-open {
 
 /* Основной фиксированный хедер */
 .main-header {
-    position: fixed !important;
-    top: 0 !important;
-    left: 0 !important;
-    width: 100% !important;
-    height: 64px !important;
-    background: linear-gradient(135deg, #8B4513 0%, #DAA520 100%) !important;
-    color: white !important;
-    z-index: 1002 !important;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.3) !important;
-    border-radius: 0 0 20px 20px !important;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 64px;
+    background: linear-gradient(135deg, #2d4a22 0%, #1a3318 100%); /* Темно-зеленый градиент */
+    color: white;
+    z-index: 1002;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.4);
+    border-radius: 0 0 20px 20px;
 }
 
 .main-header-content {
-    display: flex !important;
-    justify-content: space-between !important;
-    align-items: center !important;
-    height: 100% !important;
-    padding: 0 20px !important;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 100%;
+    padding: 0 20px;
 }
 
 .main-logo {
-    display: flex !important;
-    align-items: center !important;
-    gap: 10px !important;
+    display: flex;
+    align-items: center;
+    gap: 10px;
 }
 
 .main-logo-img {
-    width: 40px !important;
-    height: 40px !important;
-    border-radius: 50% !important;
-    background: linear-gradient(135deg, #DAA520 0%, #98FB98 100%) !important;
-    padding: 6px !important;
-    border: 2px solid white !important;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.2) !important;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #DAA520 0%, #98FB98 100%);
+    padding: 6px;
+    border: 2px solid white;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.2);
 }
 
 .main-logo-text {
-    font-family: 'Russo One', sans-serif !important;
-    font-size: 1.5rem !important;
-    color: white !important;
-    text-shadow: 2px 2px 4px rgba(0,0,0,0.5) !important;
+    font-family: 'Russo One', sans-serif;
+    font-size: 1.5rem;
+    color: white;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
 }
 
 /* Контактный хедер */
 .contact-header {
-    background: linear-gradient(135deg, #DAA520 0%, #98FB98 100%) !important;
-    color: #2D1810 !important;
-    padding: 20px 0 !important;
-    margin-top: 64px !important;
-    box-shadow: 0 4px 16px rgba(139, 69, 19, 0.2) !important;
-    border-radius: 0 0 20px 20px !important;
-    transition: transform 0.4s ease !important;
-    transform: translateY(0) !important;
+    background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%); /* Золотой градиент */
+    color: #1f2937; /* Темный текст для лучшей читаемости */
+    padding: 20px 0;
+    margin-top: 64px;
+    box-shadow: 0 4px 16px rgba(245, 158, 11, 0.3);
+    border-radius: 0 0 20px 20px;
+    transition: transform 0.4s ease;
+    transform: translateY(0);
 }
 
 .contact-header.hidden {
-    transform: translateY(-100%) !important;
+    transform: translateY(-100%);
 }
 
 .contact-header-content {
-    display: flex !important;
-    justify-content: space-between !important;
-    align-items: center !important;
-    flex-wrap: wrap !important;
-    gap: 20px !important;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 20px;
 }
 
 .city-info {
-    color: white !important;
-    font-weight: 600 !important;
-    font-size: 1.1rem !important;
-    text-shadow: 1px 1px 2px rgba(0,0,0,0.5) !important;
+    color: #1f2937; /* Темный цвет вместо белого */
+    font-weight: 700;
+    font-size: 1.1rem;
+    text-shadow: 1px 1px 2px rgba(255,255,255,0.5); /* Светлая тень для контраста */
 }
 
 .contact-info {
-    display: flex !important;
-    flex-direction: column !important;
-    gap: 15px !important;
-    align-items: center !important;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    align-items: center;
 }
 
 .phone {
-    color: white !important;
-    font-size: 1.3rem !important;
-    font-weight: 700 !important;
-    text-shadow: 2px 2px 4px rgba(0,0,0,0.5) !important;
-    text-align: center !important;
+    color: #1f2937; /* Темный цвет */
+    font-size: 1.3rem;
+    font-weight: 800;
+    text-shadow: 1px 1px 2px rgba(255,255,255,0.5);
+    text-align: center;
 }
 
 .social-links {
-    display: flex !important;
-    gap: 15px !important;
-    flex-wrap: wrap !important;
-    justify-content: center !important;
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+    justify-content: center;
 }
 
 .social-links a {
-    display: flex !important;
-    flex-direction: column !important;
-    align-items: center !important;
-    gap: 8px !important;
-    padding: 12px !important;
-    background: rgba(255,255,255,0.9) !important;
-    border-radius: 12px !important;
-    text-decoration: none !important;
-    transition: all 0.3s ease !important;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.1) !important;
-    min-width: 70px !important;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    padding: 12px;
+    background: rgba(45, 74, 34, 0.9); /* Темно-зеленый фон */
+    border-radius: 12px;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.2);
+    min-width: 70px;
+    border: 2px solid rgba(255,255,255,0.2);
 }
 
 .social-links a:hover {
-    transform: translateY(-3px) scale(1.05) !important;
-    background: white !important;
-    box-shadow: 0 6px 20px rgba(0,0,0,0.2) !important;
+    transform: translateY(-3px) scale(1.05);
+    background: #2d4a22; /* Более темный зеленый при наведении */
+    box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+    border-color: rgba(255,255,255,0.4);
 }
 
 .social-icon {
-    width: 28px !important;
-    height: 28px !important;
-    filter: drop-shadow(1px 1px 2px rgba(0,0,0,0.2)) !important;
+    width: 28px;
+    height: 28px;
+    filter: drop-shadow(1px 1px 2px rgba(0,0,0,0.2));
 }
 
 .social-links a span {
-    font-size: 0.85rem !important;
-    font-weight: 600 !important;
-    color: #8B4513 !important;
-    text-align: center !important;
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: #ffffff; /* Белый текст для контраста */
+    text-align: center;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
 }
 
 /* Бургер меню */
 .burger {
-    display: flex !important;
-    flex-direction: column !important;
-    justify-content: center !important;
-    align-items: center !important;
-    width: 40px !important;
-    height: 40px !important;
-    background: rgba(255,255,255,0.2) !important;
-    border: 2px solid white !important;
-    border-radius: 8px !important;
-    cursor: pointer !important;
-    backdrop-filter: blur(5px) !important;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 40px;
+    height: 40px;
+    background: rgba(255,255,255,0.2);
+    border: 2px solid white;
+    border-radius: 8px;
+    cursor: pointer;
+    backdrop-filter: blur(5px);
 }
 
 .burger span {
-    display: block !important;
-    width: 20px !important;
-    height: 2px !important;
-    background: white !important;
-    border-radius: 1px !important;
-    margin: 2px 0 !important;
-    transition: all 0.3s !important;
+    display: block;
+    width: 20px;
+    height: 2px;
+    background: white;
+    border-radius: 1px;
+    margin: 2px 0;
+    transition: all 0.3s;
 }
 
 /* Навигация */
 .main-nav {
-    display: none !important;
+    display: none;
 }
 
 .main-nav.open {
-    display: block !important;
-    position: fixed !important;
-    top: 64px !important;
-    left: 0 !important;
-    width: 100% !important;
-    background: linear-gradient(135deg, #8B4513 0%, #DAA520 100%) !important;
-    z-index: 1001 !important;
-    padding: 20px !important;
-    box-shadow: 0 4px 16px rgba(0,0,0,0.3) !important;
+    display: block;
+    position: fixed;
+    top: 64px;
+    left: 0;
+    width: 100%;
+    background: linear-gradient(135deg, #2d4a22 0%, #1a3318 100%); /* Темно-зеленый */
+    z-index: 1001;
+    padding: 20px;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.4);
 }
 
 .main-nav ul {
-    list-style: none !important;
-    margin: 0 !important;
-    padding: 0 !important;
-    display: flex !important;
-    flex-direction: column !important;
-    gap: 10px !important;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
 }
 
 .main-nav a {
-    display: block !important;
-    padding: 15px 20px !important;
-    color: white !important;
-    text-decoration: none !important;
-    font-weight: 600 !important;
-    border-radius: 10px !important;
-    background: rgba(255,255,255,0.1) !important;
-    transition: all 0.3s ease !important;
-    text-align: center !important;
+    display: block;
+    padding: 15px 20px;
+    color: #ffffff; /* Белый текст */
+    text-decoration: none;
+    font-weight: 600;
+    border-radius: 10px;
+    background: rgba(245, 158, 11, 0.2); /* Золотистый полупрозрачный фон */
+    transition: all 0.3s ease;
+    text-align: center;
+    border: 2px solid transparent;
 }
 
 .main-nav a:hover,
 .main-nav a.active {
-    background: rgba(255,255,255,0.2) !important;
-    transform: translateX(5px) !important;
+    background: rgba(245, 158, 11, 0.4);
+    transform: translateX(5px);
+    border-color: #f59e0b;
+    color: #ffffff;
+    box-shadow: 0 2px 8px rgba(245, 158, 11, 0.3);
 }
 
 /* Отступ для контента */
 body {
-    padding-top: 64px !important;
+    padding-top: 64px;
 }
 
 /* Медиа-запросы для мобильных устройств */
 @media (max-width: 768px) {
     .contact-header-content {
-        flex-direction: column !important;
-        text-align: center !important;
+        flex-direction: column;
+        text-align: center;
     }
     
     .social-links {
-        gap: 10px !important;
+        gap: 10px;
     }
     
     .social-links a {
-        min-width: 60px !important;
-        padding: 10px !important;
+        min-width: 60px;
+        padding: 10px;
     }
     
     .social-icon {
-        width: 24px !important;
-        height: 24px !important;
+        width: 24px;
+        height: 24px;
     }
     
     .social-links a span {
-        font-size: 0.8rem !important;
+        font-size: 0.8rem;
     }
 }
 
 @media (max-width: 480px) {
     .main-logo-text {
-        font-size: 1.2rem !important;
+        font-size: 1.2rem;
     }
     
     .main-logo-img {
-        width: 32px !important;
-        height: 32px !important;
+        width: 32px;
+        height: 32px;
     }
     
     .phone {
-        font-size: 1.1rem !important;
+        font-size: 1.1rem;
     }
     
     .city-info {
-        font-size: 1rem !important;
+        font-size: 1rem;
     }
 }
