@@ -308,16 +308,38 @@ function initHeaderScroll() {
 
 // Функция для управления бургер меню
 function initBurgerMenu() {
-    const burgerBtn = document.getElementById('burgerBtn');
-    const mainNav = document.getElementById('mainNav');
+    const burgerBtn = document.querySelector('.burger'); // Изменил селектор
+    const mainNav = document.querySelector('.main-nav'); // Изменил селектор
     
     console.log('Поиск бургер меню:', { burgerBtn, mainNav });
     
     if (burgerBtn && mainNav) {
-        burgerBtn.addEventListener('click', function() {
+        burgerBtn.addEventListener('click', function(e) {
+            e.preventDefault();
+            e.stopPropagation();
             mainNav.classList.toggle('open');
-            console.log('Бургер меню переключено');
+            burgerBtn.classList.toggle('open');
+            console.log('Бургер меню переключено, open:', mainNav.classList.contains('open'));
         });
+        
+        // Закрытие меню по клику на ссылку
+        const navLinks = mainNav.querySelectorAll('a');
+        navLinks.forEach(link => {
+            link.addEventListener('click', function() {
+                mainNav.classList.remove('open');
+                burgerBtn.classList.remove('open');
+            });
+        });
+        
+        // Закрытие меню по клику вне его
+        document.addEventListener('click', function(e) {
+            if (!burgerBtn.contains(e.target) && !mainNav.contains(e.target)) {
+                mainNav.classList.remove('open');
+                burgerBtn.classList.remove('open');
+            }
+        });
+    } else {
+        console.log('Бургер или навигация не найдены');
     }
 }
 
@@ -475,24 +497,7 @@ function unfocusImage(btn) {
 }
 
 // Простое мобильное меню
-document.addEventListener('DOMContentLoaded', function() {
-    const burger = document.getElementById('burgerBtn');
-    const nav = document.getElementById('mainNav');
-    if (burger && nav) {
-        burger.addEventListener('click', function() {
-            nav.classList.toggle('open');
-            burger.classList.toggle('open');
-        });
-        // Закрытие меню по клику на ссылку
-        const links = nav.querySelectorAll('a');
-        links.forEach(link => {
-            link.addEventListener('click', function() {
-                nav.classList.remove('open');
-                burger.classList.remove('open');
-            });
-        });
-    }
-});
+
 
 function showCustomAlert(message) {
     const alertDiv = document.getElementById('customAlert');
@@ -509,10 +514,24 @@ function closeCustomAlert() {
     setTimeout(() => { alertDiv.style.display = 'none'; }, 400);
 }
 
-// Гарантированно навешиваем обработчик
-document.addEventListener('DOMContentLoaded', function() {
-  const burger = document.querySelector('.fixed-header .burger');
-  if (burger) {
-    burger.addEventListener('click', toggleMobileMenu);
-  }
-});  
+function toggleMobileMenu() {
+    const nav = document.querySelector('.main-nav');
+    const burger = document.querySelector('.burger');
+    
+    if (nav && burger) {
+        nav.classList.toggle('open');
+        burger.classList.toggle('open');
+        
+        // Анимация бургера
+        const spans = burger.querySelectorAll('span');
+        if (burger.classList.contains('open')) {
+            spans[0].style.transform = 'rotate(45deg) translate(5px, 5px)';
+            spans[1].style.opacity = '0';
+            spans[2].style.transform = 'rotate(-45deg) translate(7px, -6px)';
+        } else {
+            spans[0].style.transform = 'none';
+            spans[1].style.opacity = '1';
+            spans[2].style.transform = 'none';
+        }
+    }
+}
