@@ -14,16 +14,16 @@
 }
 
 :root {
-    --primary-brown: #2d4a22;      /* темно-зеленый вместо коричневого */
-    --accent-gold: #f59e0b;        /* яркий золотой */
-    --accent-mint: #10b981;        /* мятно-зеленый */
-    --neutral-cream: #f8fafc;      /* светлый крем */
-    --text-dark: #1f2937;          /* темно-серый для текста */
-    --text-light: #ffffff;         /* белый текст */
-    --success-green: #059669;      /* зеленый успех */
-    --shadow: rgba(45, 74, 34, 0.15);
-    --shadow-warm: rgba(245, 158, 11, 0.25);
-    --shadow-mint: rgba(16, 185, 129, 0.2);
+    --primary-brown: #8B4513;
+    --accent-gold: #DAA520;
+    --accent-mint: #98FB98;
+    --neutral-cream: #F5F5DC;
+    --text-dark: #2D1810;
+    --text-light: #FFFFFF;
+    --success-green: #4caf50;
+    --shadow: rgba(139, 69, 19, 0.2);
+    --shadow-warm: rgba(218, 165, 32, 0.2);
+    --shadow-mint: rgba(152, 251, 152, 0.2);
 }
 
 * {
@@ -39,7 +39,7 @@ body {
     line-height: 1.7;
     min-height: 100vh;
     font-size: 1.08rem;
-    padding-top: 64px; /* высота основного хедера */
+    padding-top: 64px; /* высота .fixed-header */
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -101,7 +101,81 @@ a:hover, .main-nav a:hover, .footer-section a:hover {
     padding: 0 20px;
 }
 
-/* Логотипы - Вариант 2: Градиентный круглый фон */
+/* Header */
+.fixed-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background: linear-gradient(135deg, var(--primary-brown) 0%, var(--accent-gold) 100%);
+    color: var(--text-light);
+    padding: 0.5rem 0;
+    box-shadow: 0 4px 16px var(--shadow);
+    z-index: 1001;
+    border-radius: 0 0 24px 24px;
+}
+
+.fixed-header .header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    padding: 12px 0;
+}
+
+.fixed-header .logo {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-family: 'Russo One', sans-serif;
+    font-size: 1.5rem;
+    color: var(--text-light);
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+}
+
+/* Обычный хедер с контактной информацией */
+header {
+    background: linear-gradient(135deg, var(--accent-gold) 0%, var(--accent-mint) 100%);
+    color: var(--text-dark);
+    padding: 1rem 0;
+    box-shadow: 0 4px 16px var(--shadow);
+    position: relative;
+    z-index: 1000;
+    border-radius: 0 0 24px 24px;
+    margin-top: 0; /* убираем отступ, так как body уже имеет padding-top */
+}
+
+.header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    padding: 24px 0;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-family: 'Russo One', sans-serif;
+    font-size: 2rem;
+    color: var(--primary-brown);
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+}
+
+/* Вариант 1 (базовый, белый круг)
+/*
+.logo-img, .hero-logo-img, .footer-logo-img, .modal-logo {
+    border-radius: 50%;
+    background: white;
+    padding: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.10);
+    border: 2px solid #ff6b35;
+    object-fit: contain;
+}
+*/
+
+/* Вариант 2: Градиентный круглый фон */
 .logo-img {
     width: 40px;
     height: 40px;
@@ -171,12 +245,9 @@ a:hover, .main-nav a:hover, .footer-section a:hover {
 }
 
 .main-nav a {
-    color: var(--text-light) !important;
-    background: rgba(255,255,255,0.15) !important;
-    border: 2px solid transparent !important;
-    font-weight: 600 !important;
-    text-shadow: 1px 1px 2px rgba(0,0,0,0.5) !important;
+    color: var(--text-dark);
     text-decoration: none;
+    font-weight: 600;
     padding: 8px 16px;
     border-radius: 8px;
     transition: background 0.2s, color 0.2s;
@@ -184,10 +255,8 @@ a:hover, .main-nav a:hover, .footer-section a:hover {
 
 .main-nav a:hover,
 .main-nav a.active {
-    background: rgba(255,255,255,0.25) !important;
-    border-color: var(--text-light) !important;
-    color: var(--text-light) !important;
-    text-shadow: 1px 1px 3px rgba(0,0,0,0.7) !important;
+    background: var(--primary-brown);
+    color: var(--neutral-cream);
 }
 
 .contact-info {
@@ -243,12 +312,12 @@ a:hover, .main-nav a:hover, .footer-section a:hover {
 
 /* Hero Section */
 .hero {
-    background: linear-gradient(120deg, var(--primary-brown) 0%, var(--accent-gold) 100%) !important;
+    background: linear-gradient(120deg, var(--primary-brown) 0%, var(--accent-gold) 100%);
     border-radius: 24px;
-    box-shadow: 0 2px 8px var(--shadow);
-    padding: 24px 0 24px 0;
+    box-shadow: 0 2px 8px var(--shadow); /* был 0 8px 32px */
+    padding: 24px 0 24px 0; /* было 48px 0 32px 0 */
     margin-top: 12px;
-    margin-bottom: 16px;
+    margin-bottom: 16px; /* было 32px */
     position: relative;
     overflow: hidden;
 }
@@ -273,8 +342,8 @@ a:hover, .main-nav a:hover, .footer-section a:hover {
 }
 
 .hero h1, .hero p {
-    color: var(--text-light) !important;
-    text-shadow: 2px 2px 6px rgba(0,0,0,0.7) !important;
+    color: var(--text-light);
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
     background: none;
     border-radius: 0;
     padding: 0;
@@ -285,7 +354,7 @@ a:hover, .main-nav a:hover, .footer-section a:hover {
 .hero h1 {
     font-size: 3rem;
     margin-bottom: 1rem;
-    text-shadow: 2px 2px 6px rgba(0,0,0,0.7);
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
 }
 
 .hero p {
@@ -294,14 +363,14 @@ a:hover, .main-nav a:hover, .footer-section a:hover {
     max-width: 600px;
     margin-left: auto;
     margin-right: auto;
-    text-shadow: 2px 2px 6px rgba(0,0,0,0.7);
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
 }
 
 .cta-button {
-    background: linear-gradient(90deg, var(--accent-mint) 0%, var(--primary-brown) 100%) !important;
-    color: var(--text-light) !important;
-    font-weight: 700 !important;
+    background: linear-gradient(90deg, var(--accent-mint) 0%, var(--primary-brown) 100%);
+    color: var(--text-light);
     font-size: 1.2em;
+    font-weight: bold;
     border: none;
     border-radius: 12px;
     padding: 16px 32px;
@@ -311,7 +380,7 @@ a:hover, .main-nav a:hover, .footer-section a:hover {
 }
 
 .cta-button:hover {
-    background: linear-gradient(90deg, var(--accent-gold) 0%, var(--primary-brown) 100%) !important;
+    background: linear-gradient(90deg, var(--accent-gold) 0%, var(--primary-brown) 100%);
     transform: translateY(-2px) scale(1.04);
     box-shadow: 0 8px 24px var(--shadow-warm);
 }
@@ -828,7 +897,7 @@ a:hover, .main-nav a:hover, .footer-section a:hover {
 .catalog-card-content h3 {
     margin: 0 0 8px 0;
     font-size: 1.2rem;
-    color: var(--primary-brown);
+    color: var(--primary-brown, #7c4a03);
     font-family: 'Russo One', sans-serif;
 }
 
@@ -896,15 +965,15 @@ a:hover, .main-nav a:hover, .footer-section a:hover {
 }
 
 .catalog-specs span {
-    background: linear-gradient(135deg, var(--neutral-cream) 0%, #fff5e6 100%);
+    background: linear-gradient(135deg, var(--background-warm) 0%, #fff5e6 100%);
     padding: 0.4rem 1rem;
     border-radius: 15px;
     font-size: 0.95rem;
     font-weight: 600;
     color: var(--primary-brown);
-    border: 1px solid var(--accent-gold);
+    border: 1px solid rgba(255, 107, 53, 0.13);
     text-align: center;
-    box-shadow: 0 1px 4px rgba(245,158,11,0.04);
+    box-shadow: 0 1px 4px rgba(255,107,53,0.04);
 }
 
 .catalog-features {
@@ -1840,13 +1909,8 @@ footer {
 @media (max-width: 600px) {
     /* Фиксированный хедер остается всегда видимым */
     .fixed-header {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
         padding: 0.5rem 0;
         height: 64px;
-        z-index: 1001;
     }
     
     .fixed-header .header-content {
@@ -1869,55 +1933,50 @@ footer {
     
     /* Обычный хедер с контактами */
     header {
-        position: relative;
         padding: 0.8rem 0;
         background: linear-gradient(135deg, var(--accent-gold) 0%, var(--accent-mint) 100%);
         margin-top: 0;
-        z-index: 1000;
     }
     
-    /* Стили для header-content в обычном хедере */
-    header .header-content {
+    .header-content {
         flex-direction: column;
         gap: 1rem;
         text-align: center;
     }
     
-    /* Стили для логотипа в обычном хедере */
-    header .logo {
+    .logo {
         font-size: 1.4rem;
         margin-bottom: 0.5rem;
     }
 
-    header .logo-img {
+    .logo-img {
         width: 35px;
         height: 35px;
         border: 3px solid var(--text-light);
         box-shadow: 0 4px 12px rgba(0,0,0,0.3);
     }
 
-    header .logo-text {
+    .logo-text {
         font-size: 1.4rem;
         color: var(--text-light);
         text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
     }
     
-    header .city-info {
+    .city-info {
         color: var(--text-light);
         font-weight: 600;
-        padding: 12;
         font-size: 1.1rem;
         text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
         margin-bottom: 0.5rem;
     }
 
-    header .contact-info {
+    .contact-info {
         flex-direction: column;
         gap: 1rem;
         width: 100%;
     }
     
-    header .phone {
+    .phone {
         color: var(--text-light);
         font-size: 1.3rem;
         font-weight: 700;
@@ -1925,7 +1984,7 @@ footer {
         margin-bottom: 0.5rem;
     }
     
-    header .social-links {
+    .social-links {
         display: flex;
         justify-content: center;
         gap: 2rem;
@@ -1937,7 +1996,7 @@ footer {
         box-shadow: 0 4px 16px rgba(0,0,0,0.2);
     }
     
-    header .social-links a {
+    .social-links a {
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -1951,19 +2010,19 @@ footer {
         min-width: 80px;
     }
     
-    header .social-links a:hover {
+    .social-links a:hover {
         transform: translateY(-3px) scale(1.05);
         background: var(--text-light);
         box-shadow: 0 6px 20px rgba(0,0,0,0.2);
     }
     
-    header .social-icon {
+    .social-icon {
         width: 32px !important;
         height: 32px !important;
         filter: drop-shadow(1px 1px 2px rgba(0,0,0,0.2));
     }
     
-    header .social-links a span {
+    .social-links a span {
         font-size: 0.9rem;
         font-weight: 600;
         color: var(--primary-brown);
@@ -2290,268 +2349,5 @@ body.drawer-open {
         color: #fff;
         transform: translateX(5px);
         box-shadow: 0 4px 12px rgba(0,0,0,0.2);
-    }
-}
-
-/* Новая структура хедеров - полная перезапись */
-.header-wrapper {
-    position: relative;
-    z-index: 1000;
-}
-
-/* Основной фиксированный хедер */
-.main-header {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 64px;
-    background: linear-gradient(135deg, #2d4a22 0%, #1a3318 100%); /* Темно-зеленый градиент */
-    color: white;
-    z-index: 1002;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.4);
-    border-radius: 0 0 20px 20px;
-}
-
-.main-header-content {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    height: 100%;
-    padding: 0 20px;
-}
-
-.main-logo {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-}
-
-.main-logo-img {
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    background: linear-gradient(135deg, #DAA520 0%, #98FB98 100%);
-    padding: 6px;
-    border: 2px solid white;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.2);
-}
-
-.main-logo-text {
-    font-family: 'Russo One', sans-serif;
-    font-size: 1.5rem;
-    color: white;
-    text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
-}
-
-/* Контактный хедер */
-.contact-header {
-    background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%); /* Золотой градиент */
-    color: #1f2937; /* Темный текст для лучшей читаемости */
-    padding: 20px 0;
-    margin-top: 64px;
-    box-shadow: 0 4px 16px rgba(245, 158, 11, 0.3);
-    border-radius: 0 0 20px 20px;
-    transition: transform 0.4s ease;
-    transform: translateY(0);
-}
-
-.contact-header.hidden {
-    transform: translateY(-100%);
-}
-
-.contact-header-content {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-wrap: wrap;
-    gap: 20px;
-}
-
-.city-info {
-    color: #1f2937; /* Темный цвет вместо белого */
-    font-weight: 700;
-    font-size: 1.1rem;
-    text-shadow: 1px 1px 2px rgba(255,255,255,0.5); /* Светлая тень для контраста */
-}
-
-.contact-info {
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-    align-items: center;
-}
-
-.phone {
-    color: #1f2937; /* Темный цвет */
-    font-size: 1.3rem;
-    font-weight: 800;
-    text-shadow: 1px 1px 2px rgba(255,255,255,0.5);
-    text-align: center;
-}
-
-.social-links {
-    display: flex;
-    gap: 15px;
-    flex-wrap: wrap;
-    justify-content: center;
-}
-
-.social-links a {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 8px;
-    padding: 12px;
-    background: rgba(45, 74, 34, 0.9); /* Темно-зеленый фон */
-    border-radius: 12px;
-    text-decoration: none;
-    transition: all 0.3s ease;
-    box-shadow: 0 3px 10px rgba(0,0,0,0.2);
-    min-width: 70px;
-    border: 2px solid rgba(255,255,255,0.2);
-}
-
-.social-links a:hover {
-    transform: translateY(-3px) scale(1.05);
-    background: #2d4a22; /* Более темный зеленый при наведении */
-    box-shadow: 0 6px 20px rgba(0,0,0,0.3);
-    border-color: rgba(255,255,255,0.4);
-}
-
-.social-icon {
-    width: 28px;
-    height: 28px;
-    filter: drop-shadow(1px 1px 2px rgba(0,0,0,0.2));
-}
-
-.social-links a span {
-    font-size: 0.85rem;
-    font-weight: 700;
-    color: #ffffff; /* Белый текст для контраста */
-    text-align: center;
-    text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
-}
-
-/* Бургер меню */
-.burger {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    width: 40px;
-    height: 40px;
-    background: rgba(255,255,255,0.2);
-    border: 2px solid white;
-    border-radius: 8px;
-    cursor: pointer;
-    backdrop-filter: blur(5px);
-}
-
-.burger span {
-    display: block;
-    width: 20px;
-    height: 2px;
-    background: white;
-    border-radius: 1px;
-    margin: 2px 0;
-    transition: all 0.3s;
-}
-
-/* Навигация */
-.main-nav {
-    display: none;
-}
-
-.main-nav.open {
-    display: block;
-    position: fixed;
-    top: 64px;
-    left: 0;
-    width: 100%;
-    background: linear-gradient(135deg, #2d4a22 0%, #1a3318 100%); /* Темно-зеленый */
-    z-index: 1001;
-    padding: 20px;
-    box-shadow: 0 4px 16px rgba(0,0,0,0.4);
-}
-
-.main-nav ul {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-}
-
-.main-nav a {
-    display: block;
-    padding: 15px 20px;
-    color: #ffffff; /* Белый текст */
-    text-decoration: none;
-    font-weight: 600;
-    border-radius: 10px;
-    background: rgba(245, 158, 11, 0.2); /* Золотистый полупрозрачный фон */
-    transition: all 0.3s ease;
-    text-align: center;
-    border: 2px solid transparent;
-}
-
-.main-nav a:hover,
-.main-nav a.active {
-    background: rgba(245, 158, 11, 0.4);
-    transform: translateX(5px);
-    border-color: #f59e0b;
-    color: #ffffff;
-    box-shadow: 0 2px 8px rgba(245, 158, 11, 0.3);
-}
-
-/* Отступ для контента */
-body {
-    padding-top: 64px;
-}
-
-/* Медиа-запросы для мобильных устройств */
-@media (max-width: 768px) {
-    .contact-header-content {
-        flex-direction: column;
-        text-align: center;
-    }
-    
-    .social-links {
-        gap: 10px;
-    }
-    
-    .social-links a {
-        min-width: 60px;
-        padding: 10px;
-    }
-    
-    .social-icon {
-        width: 24px;
-        height: 24px;
-    }
-    
-    .social-links a span {
-        font-size: 0.8rem;
-    }
-}
-
-@media (max-width: 480px) {
-    .main-logo-text {
-        font-size: 1.2rem;
-    }
-    
-    .main-logo-img {
-        width: 32px;
-        height: 32px;
-    }
-    
-    .phone {
-        font-size: 1.1rem;
-    }
-    
-    .city-info {
-        font-size: 1rem;
     }
 }
