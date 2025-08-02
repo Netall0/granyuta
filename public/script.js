@@ -26,7 +26,6 @@ const CONFIG = {
     
     // Дополнительные опции
     extras: {
-        lighting: { name: 'LED-освещение', price: 15000 },
         delivery: { name: 'Доставка и установка (по договорённости)', price: 0}
     }
 };
@@ -66,11 +65,6 @@ function calculatePrice() {
     const deliveryCheckbox = document.getElementById('delivery');
     if (deliveryCheckbox && deliveryCheckbox.checked) {
         totalPrice += 0;
-    }
-    // Если выбрана подсветка, добавляем 15 000
-    const lightingCheckbox = document.getElementById('lighting');
-    if (lightingCheckbox && lightingCheckbox.checked) {
-        totalPrice += 15000;
     }
     document.getElementById('totalPrice').textContent = totalPrice.toLocaleString('ru-RU') + ' ₽';
 }
@@ -115,21 +109,46 @@ async function loadCatalog() {
             grid.innerHTML = '<div class="empty-catalog">Каталог пуст</div>';
             return;
         }
-        grid.innerHTML = baths.map(bath => `
-            <div class="catalog-card">
-                <div class="catalog-card-img">
-                    <img src="${bath.image.startsWith('http') ? bath.image : (bath.image.startsWith('image/') ? bath.image : 'image/' + bath.image)}" alt="${bath.name}">
+        grid.innerHTML = baths.map(bath => {
+            const productSchema = `\n<script type="application/ld+json">${JSON.stringify({
+                "@context": "https://schema.org/",
+                "@type": "Product",
+                "name": bath.name,
+                "image": bath.image.startsWith('http') ? bath.image : (bath.image.startsWith('image/') ? 'https://granyuta.ru/' + bath.image : 'https://granyuta.ru/image/' + bath.image),
+                "description": bath.description,
+                "brand": {
+                    "@type": "Brand",
+                    "name": "ГрАнь Уюта"
+                },
+                "offers": {
+                    "@type": "Offer",
+                    "priceCurrency": "RUB",
+                    "price": bath.price,
+                    "itemCondition": "https://schema.org/NewCondition",
+                    "availability": "https://schema.org/InStock",
+                    "seller": {
+                        "@type": "Organization",
+                        "name": "ГрАнь Уюта"
+                    }
+                }
+            })}</script>\n`;
+            return `
+                <div class="catalog-card">
+                    <div class="catalog-card-img">
+                        <img src="${bath.image.startsWith('http') ? bath.image : (bath.image.startsWith('image/') ? bath.image : 'image/' + bath.image)}" alt="${bath.name}">
+                    </div>
+                    <div class="catalog-card-content">
+                        <h3>${bath.name}</h3>
+                        <p>${bath.description}</p>
+                    </div>
+                    <div class="catalog-card-footer">
+                        <div class="catalog-card-price">${Number(bath.price).toLocaleString('ru-RU')} ₽</div>
+                        <button class="catalog-btn" onclick="openOrderModal('${bath.name}', '${bath.price}')">Заказать</button>
+                    </div>
+                    ${productSchema}
                 </div>
-                <div class="catalog-card-content">
-                    <h3>${bath.name}</h3>
-                    <p>${bath.description}</p>
-                </div>
-                <div class="catalog-card-footer">
-                    <div class="catalog-card-price">${Number(bath.price).toLocaleString('ru-RU')} ₽</div>
-                    <button class="catalog-btn" onclick="openOrderModal('${bath.name}', '${bath.price}')">Заказать</button>
-                </div>
-            </div>
-        `).join('');
+            `;
+        }).join('');
     } catch (e) {
         grid.innerHTML = '<div class="error">Ошибка загрузки каталога</div>';
     }
@@ -392,7 +411,7 @@ document.addEventListener('DOMContentLoaded', function() {
         input.addEventListener('change', calculatePrice);
     });
 
-    const calculatorCheckboxes = document.querySelectorAll('#lighting, #ventilation, #delivery, #foundation');
+    const calculatorCheckboxes = document.querySelectorAll('#delivery');
     calculatorCheckboxes.forEach(checkbox => {
         checkbox.addEventListener('change', calculatePrice);
     });
