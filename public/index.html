@@ -23,10 +23,10 @@
     <title>Бани-бочки из сибирского кедра в Новосибирске от 169,000₽ под ключ | ГрАнь Уюта</title>
     <link rel="icon" type="image/png" href="icons/logo.png">
     <link href="https://fonts.googleapis.com/css2?family=Russo+One&family=Open+Sans:wght@300;400;600;700&family=Caveat:wght@400;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css?v=20250102">
-    <script src="script.js?v=20250102"></script>
+    <link rel="stylesheet" href="styles.css?v=20250103">
+    <script src="script.js?v=20250103"></script>
 
-    <meta property="og:title" content="Бани-бочки в Новосибирске — ГрАнь Уюта">
+    <meta property="og:title" content="Бани-бочки в Новосибирске — ГрАнь Уютавв">
     <meta property="og:description" content="Производство и продажа бань-бочек из сибирского кедра в Новосибирске.">
     <meta property="og:image" content="https://granyuta.ru/icons/logo.png">
     <meta property="og:type" content="website">
@@ -54,19 +54,83 @@
       "@context": "https://schema.org",
       "@type": "Organization",
       "name": "ГрАнь Уюта",
-      "url": "https://granyuta.ru/",
+      "description": "Производство и установка бань-бочек в Новосибирске",
+      "url": "https://granyuta.ru",
       "logo": "https://granyuta.ru/icons/logo.png",
-      "contactPoint": [{
-        "@type": "ContactPoint",
-        "telephone": "+7-913-770-56-56",
-        "contactType": "customer service",
-        "areaServed": "RU",
-        "availableLanguage": ["Russian"]
-      }],
+      "image": "https://granyuta.ru/image/banyakvadro.webp",
+      "telephone": "+7-913-770-56-56",
       "address": {
         "@type": "PostalAddress",
         "addressLocality": "Новосибирск",
         "addressCountry": "RU"
+      },
+      "sameAs": [
+        "https://vk.com/club230435323",
+        "https://t.me/GranUyta",
+        "https://www.avito.ru/user/4b514b73c92f6d3e11ef61dc4215210d/profile?src=sharing"
+      ],
+      "areaServed": {
+        "@type": "City",
+        "name": "Новосибирск"
+      }
+    }
+    </script>
+    <!-- Schema.org Service -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Service",
+      "name": "Производство бань-бочек",
+      "description": "Изготовление и установка бань-бочек под ключ в Новосибирске",
+      "provider": {
+        "@type": "Organization",
+        "name": "ГрАнь Уюта"
+      },
+      "areaServed": {
+        "@type": "City",
+        "name": "Новосибирск"
+      },
+      "serviceType": "Строительство и установка бань"
+    }
+    </script>
+    <!-- Schema.org Review для отзывов с Авито -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Review",
+      "reviewRating": {
+        "@type": "Rating",
+        "ratingValue": "5",
+        "bestRating": "5"
+      },
+      "author": {
+        "@type": "Person",
+        "name": "Иван"
+      },
+      "reviewBody": "Всё понравилось, баня отличная, доставка быстрая!",
+      "publisher": {
+        "@type": "Organization",
+        "name": "ГрАнь Уюта"
+      }
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Review",
+      "reviewRating": {
+        "@type": "Rating",
+        "ratingValue": "5",
+        "bestRating": "5"
+      },
+      "author": {
+        "@type": "Person",
+        "name": "Мария"
+      },
+      "reviewBody": "Заказывал беседку, всё супер, рекомендую!",
+      "publisher": {
+        "@type": "Organization",
+        "name": "ГрАнь Уюта"
       }
     }
     </script>
@@ -372,6 +436,7 @@
                     <li><a href="#about" class="nav-link" data-tab="about">О нас</a></li>
                     <li><a href="#gallery" class="nav-link" data-tab="gallery">Галерея</a></li>
                     <li><a href="#calculator" class="nav-link" data-tab="calculator">Калькулятор</a></li>
+                    <li><a href="faq.html" class="nav-link">FAQ</a></li>
                 </ul>
             </nav>
         </div>
@@ -708,7 +773,6 @@
                     <div class="calc-group">
                         <label for="extras">Дополнительные опции:</label>
                         <div class="calc-checkboxes">
-                            <label class="calc-checkbox"><input type="checkbox" id="lighting" onchange="calculatePrice()"> LED-освещение(+15 000 ₽)</label>
                             <label class="calc-checkbox"><input type="checkbox" id="delivery" onchange="calculatePrice()"> Доставка и установка (по договорённости)</label>
                         </div>
                     </div>
