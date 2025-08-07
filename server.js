@@ -182,7 +182,7 @@ app.get('/api/catalog', (req, res) => {
             return res.status(500).json({ error: 'Ошибка подключения к БД' });
         }
         
-        db.all('SELECT * FROM bathhouses ORDER BY price ASC', (err, rows) => {
+        db.all('SELECT * FROM bathhouses ORDER BY price DESC', (err, rows) => {
             if (err) {
                 log('error', 'Ошибка запроса к БД', { error: err.message });
                 db.close();
