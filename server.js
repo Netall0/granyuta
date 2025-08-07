@@ -87,8 +87,8 @@ app.use(cors(corsOptions));
 
 app.use(express.json({ limit: '10mb' }));
 app.use(express.static(path.join(__dirname, 'public'), {
-    maxAge: '1d',
-    etag: true
+    maxAge: 0,
+    etag: false
 }));
 
 const TELEGRAM_BOT_TOKEN = process.env.TELEGRAM_BOT_TOKEN;
