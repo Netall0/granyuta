@@ -46,20 +46,28 @@
         font-family: 'Russo One', Arial, sans-serif;
         color: var(--primary-brown);
         margin-bottom: 12px;
+        font-weight: 700;
+        text-shadow: 1px 1px 2px rgba(139, 69, 19, 0.1);
     }
 
     h1 {
         font-size: clamp(1.8em, 5vw, 2.6em);
         letter-spacing: clamp(0.5px, 0.2vw, 1px);
+        font-weight: 800;
+        text-shadow: 2px 2px 4px rgba(139, 69, 19, 0.15);
     }
 
     h2 {
         font-size: clamp(1.5em, 4vw, 2em);
         margin-top: clamp(16px, 4vw, 32px);
+        font-weight: 700;
+        text-shadow: 1px 1px 3px rgba(139, 69, 19, 0.12);
     }
 
     h3 {
         font-size: clamp(1.1em, 3vw, 1.3em);
+        font-weight: 600;
+        text-shadow: 1px 1px 2px rgba(139, 69, 19, 0.1);
     }
 
     p, li, span, label, .catalog-features p, .catalog-specs span, .about-subtitle, .catalog-city, .catalog-date, .footer-section p {
@@ -67,6 +75,7 @@
         font-size: clamp(0.9rem, 2.5vw, 1.08rem);
         line-height: 1.7;
         letter-spacing: 0.1px;
+        font-weight: 500;
     }
 
     a, .main-nav a, .footer-section a {
@@ -420,10 +429,18 @@
         justify-content: center;
     }
 
+    .city-info {
+        font-size: clamp(1rem, 3vw, 1.2rem);
+        font-weight: bold;
+        color: var(--primary-brown);
+        text-shadow: 1px 1px 2px rgba(255,255,255,0.5);
+    }
+
     .phone {
         font-size: clamp(1rem, 3vw, 1.2rem);
-        font-weight: 600;
+        font-weight: bold;
         color: var(--accent-gold);
+        text-shadow: 1px 1px 2px rgba(255,255,255,0.5);
     }
 
     .social-links {
@@ -435,6 +452,7 @@
         color: var(--text-dark);
         text-decoration: none;
         font-size: 1.5rem;
+        font-weight: bold;
         transition: all 0.3s ease;
         display: flex;
         align-items: center;
@@ -454,6 +472,12 @@
 
     .social-links a:hover .social-icon {
         transform: scale(1.1);
+    }
+
+    .social-links a span {
+        font-weight: bold;
+        font-size: 1rem;
+        color: var(--text-dark);
     }
 
     /* Tab Content */
@@ -1062,6 +1086,8 @@
         font-size: 1.2rem;
         color: var(--primary-brown, #7c4a03);
         font-family: 'Russo One', sans-serif;
+        font-weight: 700;
+        text-shadow: 1px 1px 2px rgba(139, 69, 19, 0.1);
     }
 
     .catalog-card-content p {
@@ -1082,8 +1108,9 @@
         font-family: 'Russo One', sans-serif;
         font-size: 1.3rem;
         color: var(--accent-gold);
-        font-weight: bold;
+        font-weight: 800;
         letter-spacing: 0.5px;
+        text-shadow: 1px 1px 2px rgba(218, 165, 32, 0.2);
     }
 
     .catalog-btn {
@@ -1132,11 +1159,12 @@
         padding: 0.4rem 1rem;
         border-radius: 15px;
         font-size: 0.95rem;
-        font-weight: 600;
+        font-weight: 700;
         color: var(--primary-brown);
         border: 1px solid rgba(255, 107, 53, 0.13);
         text-align: center;
         box-shadow: 0 1px 4px rgba(255,107,53,0.04);
+        text-shadow: 1px 1px 1px rgba(139, 69, 19, 0.1);
     }
 
     .catalog-features {
