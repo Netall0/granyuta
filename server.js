@@ -190,11 +190,25 @@ app.get('/api/catalog', (req, res) => {
             }
             
             // Преобразуем JSON поля обратно в объекты
-            const processedRows = rows.map(row => ({
-                ...row,
-                specs: row.specs ? JSON.parse(row.specs) : [],
-                features: row.features ? JSON.parse(row.features) : []
-            }));
+            const processedRows = rows.map(row => {
+                let images = [];
+                try {
+                    // Парсим поле image как JSON-массив
+                    if (row.image) {
+                        images = JSON.parse(row.image);
+                    }
+                } catch (e) {
+                    // Если не удалось распарсить как JSON, используем как одно изображение
+                    images = row.image ? [row.image] : [];
+                }
+                
+                return {
+                    ...row,
+                    images: images, // Добавляем поле images
+                    specs: row.specs ? JSON.parse(row.specs) : [],
+                    features: row.features ? JSON.parse(row.features) : []
+                };
+            });
             
             // Обновляем кеш
             catalogCache = processedRows;
@@ -228,7 +242,6 @@ app.get('/api/calculator-config', (req, res) => {
             '120000': { name: 'Премиум дровяная', price: 120000 }
         },
         extras: {
-            lighting: { name: 'LED-освещение', price: 15000 },
             delivery: { name: 'Доставка и установка (по договорённости)', price: 0}
         }
     });
