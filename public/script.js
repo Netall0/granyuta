@@ -110,11 +110,12 @@ async function loadCatalog() {
             return;
         }
         grid.innerHTML = baths.map(bath => {
+            const images = Array.isArray(bath.images) ? bath.images : [bath.image];
             const productSchema = `\n<script type="application/ld+json">${JSON.stringify({
                 "@context": "https://schema.org/",
                 "@type": "Product",
                 "name": bath.name,
-                "image": bath.image.startsWith('http') ? bath.image : (bath.image.startsWith('image/') ? 'https://granyuta.ru/' + bath.image : 'https://granyuta.ru/image/' + bath.image),
+                "image": images.length > 0 ? (images[0].startsWith('http') ? images[0] : (images[0].startsWith('image/') ? 'https://granyuta.ru/' + images[0] : 'https://granyuta.ru/image/' + images[0])) : '',
                 "description": bath.description,
                 "brand": {
                     "@type": "Brand",
@@ -132,11 +133,37 @@ async function loadCatalog() {
                     }
                 }
             })}</script>\n`;
+            
+            const carouselId = `carousel-${bath.id}`;
+            const carouselHTML = images.length > 1 ? `
+                <div class="carousel-container">
+                    <div class="carousel-progress">
+                        <div class="carousel-progress-bar"></div>
+                    </div>
+                    <div class="carousel-wrapper" id="${carouselId}">
+                        ${images.map((img, index) => `
+                            <div class="carousel-slide ${index === 0 ? 'active' : ''}">
+                                <img src="${img.startsWith('http') ? img : (img.startsWith('image/') ? img : 'image/' + img)}" alt="${bath.name}">
+                            </div>
+                        `).join('')}
+                    </div>
+                    <button class="carousel-btn carousel-prev" onclick="changeSlide('${carouselId}', -1)">‹</button>
+                    <button class="carousel-btn carousel-next" onclick="changeSlide('${carouselId}', 1)">›</button>
+                    <div class="carousel-dots">
+                        ${images.map((_, index) => `
+                            <span class="carousel-dot ${index === 0 ? 'active' : ''}" onclick="goToSlide('${carouselId}', ${index})"></span>
+                        `).join('')}
+                    </div>
+                </div>
+            ` : `
+                <div class="catalog-card-img">
+                    <img src="${images[0].startsWith('http') ? images[0] : (images[0].startsWith('image/') ? images[0] : 'image/' + images[0])}" alt="${bath.name}">
+                </div>
+            `;
+            
             return `
                 <div class="catalog-card">
-                    <div class="catalog-card-img">
-                        <img src="${bath.image.startsWith('http') ? bath.image : (bath.image.startsWith('image/') ? bath.image : 'image/' + bath.image)}" alt="${bath.name}">
-                    </div>
+                    ${carouselHTML}
                     <div class="catalog-card-content">
                         <h3>${bath.name}</h3>
                         <p>${bath.description}</p>
@@ -149,10 +176,180 @@ async function loadCatalog() {
                 </div>
             `;
         }).join('');
+        
+        // Инициализируем автопереключение каруселей
+        initCarousels();
     } catch (e) {
         grid.innerHTML = '<div class="error">Ошибка загрузки каталога</div>';
     }
 }
+
+// Функции для карусели в стиле Flutter
+function changeSlide(carouselId, direction) {
+    const carousel = document.getElementById(carouselId);
+    if (!carousel) return;
+    
+    const slides = carousel.querySelectorAll('.carousel-slide');
+    const dots = carousel.parentElement.querySelectorAll('.carousel-dot');
+    const progressBar = carousel.parentElement.querySelector('.carousel-progress-bar');
+    let currentIndex = 0;
+    
+    // Находим текущий активный слайд
+    slides.forEach((slide, index) => {
+        if (slide.classList.contains('active')) {
+            currentIndex = index;
+        }
+    });
+    
+    // Вычисляем новый индекс
+    let newIndex = currentIndex + direction;
+    if (newIndex < 0) newIndex = slides.length - 1;
+    if (newIndex >= slides.length) newIndex = 0;
+    
+    // Анимация перехода
+    const currentSlide = slides[currentIndex];
+    const newSlide = slides[newIndex];
+    
+    // Добавляем классы для анимации
+    currentSlide.classList.add('exiting');
+    newSlide.classList.add('entering');
+    
+    // Обновляем позицию карусели
+    carousel.style.transform = `translateX(-${newIndex * 100}%)`;
+    
+    // Обновляем активные классы
+    setTimeout(() => {
+        slides.forEach(slide => slide.classList.remove('active', 'entering', 'exiting'));
+        newSlide.classList.add('active');
+        
+        // Обновляем точки
+        if (dots.length > 0) {
+            dots.forEach(dot => dot.classList.remove('active'));
+            dots[newIndex].classList.add('active');
+        }
+        
+        // Обновляем прогресс-бар
+        if (progressBar) {
+            progressBar.style.width = '0%';
+            setTimeout(() => {
+                progressBar.style.width = '100%';
+            }, 100);
+        }
+    }, 250);
+}
+
+function goToSlide(carouselId, slideIndex) {
+    const carousel = document.getElementById(carouselId);
+    if (!carousel) return;
+    
+    const slides = carousel.querySelectorAll('.carousel-slide');
+    const dots = carousel.parentElement.querySelectorAll('.carousel-dot');
+    const progressBar = carousel.parentElement.querySelector('.carousel-progress-bar');
+    
+    // Убираем активные классы
+    slides.forEach(slide => slide.classList.remove('active', 'entering', 'exiting'));
+    dots.forEach(dot => dot.classList.remove('active'));
+    
+    // Активируем нужный слайд и точку
+    if (slides[slideIndex]) {
+        slides[slideIndex].classList.add('active');
+        carousel.style.transform = `translateX(-${slideIndex * 100}%)`;
+    }
+    if (dots[slideIndex]) dots[slideIndex].classList.add('active');
+    
+    // Обновляем прогресс-бар
+    if (progressBar) {
+        progressBar.style.width = '0%';
+        setTimeout(() => {
+            progressBar.style.width = '100%';
+        }, 100);
+    }
+}
+
+function initCarousels() {
+    const carousels = document.querySelectorAll('.carousel-container');
+    carousels.forEach(carousel => {
+        const carouselId = carousel.querySelector('.carousel-wrapper').id;
+        const slides = carousel.querySelectorAll('.carousel-slide');
+        const progressBar = carousel.querySelector('.carousel-progress-bar');
+        
+        // Устанавливаем начальную позицию
+        const wrapper = carousel.querySelector('.carousel-wrapper');
+        wrapper.style.transform = 'translateX(0)';
+        
+        // Активируем первый слайд
+        if (slides.length > 0) {
+            slides[0].classList.add('active');
+        }
+        
+        // Запускаем автопереключение
+        let interval = setInterval(() => {
+            changeSlide(carouselId, 1);
+        }, 4000); // Переключение каждые 4 секунды
+        
+        // Останавливаем автопереключение при наведении
+        carousel.addEventListener('mouseenter', () => {
+            clearInterval(interval);
+            if (progressBar) progressBar.style.animationPlayState = 'paused';
+        });
+        
+        carousel.addEventListener('mouseleave', () => {
+            interval = setInterval(() => {
+                changeSlide(carouselId, 1);
+            }, 4000);
+            if (progressBar) progressBar.style.animationPlayState = 'running';
+        });
+        
+        // Добавляем свайп на мобильных
+        let startX = 0;
+        let currentX = 0;
+        let isDragging = false;
+        
+        carousel.addEventListener('touchstart', (e) => {
+            startX = e.touches[0].clientX;
+            isDragging = true;
+            clearInterval(interval);
+        });
+        
+        carousel.addEventListener('touchmove', (e) => {
+            if (!isDragging) return;
+            currentX = e.touches[0].clientX;
+            const diff = currentX - startX;
+            const wrapper = carousel.querySelector('.carousel-wrapper');
+            const currentSlide = carousel.querySelector('.carousel-slide.active');
+            const currentIndex = Array.from(slides).indexOf(currentSlide);
+            
+            wrapper.style.transform = `translateX(calc(-${currentIndex * 100}% + ${diff}px))`;
+        });
+        
+        carousel.addEventListener('touchend', (e) => {
+            if (!isDragging) return;
+            isDragging = false;
+            const diff = currentX - startX;
+            
+            if (Math.abs(diff) > 50) {
+                // Свайп достаточно большой для переключения
+                if (diff > 0) {
+                    changeSlide(carouselId, -1);
+                } else {
+                    changeSlide(carouselId, 1);
+                }
+            } else {
+                // Возвращаемся к текущему слайду
+                const currentSlide = carousel.querySelector('.carousel-slide.active');
+                const currentIndex = Array.from(slides).indexOf(currentSlide);
+                const wrapper = carousel.querySelector('.carousel-wrapper');
+                wrapper.style.transform = `translateX(-${currentIndex * 100}%)`;
+            }
+            
+            // Перезапускаем автопереключение
+            interval = setInterval(() => {
+                changeSlide(carouselId, 1);
+            }, 4000);
+        });
+    });
+}
+
 // Обработка формы заявки
 async function handleOrderForm(e) {
     e.preventDefault();
@@ -554,4 +751,83 @@ function toggleMobileMenu() {
         }
     }
 }
+
+// --- Модальное окно для просмотра фото из карусели ---
+let currentModalImages = [];
+let currentModalIndex = 0;
+
+function openCarouselImageModal(images, index) {
+    currentModalImages = images;
+    currentModalIndex = index;
+    const modal = document.getElementById('carouselImageModal');
+    const img = document.getElementById('carouselImageModalImg');
+    const dots = document.getElementById('carouselImageModalDots');
+    img.src = images[index];
+    img.classList.remove('zoomed');
+    modal.style.display = 'flex';
+    document.body.style.overflow = 'hidden';
+    // dots
+    dots.innerHTML = images.map((_, i) => `<span class="carousel-dot${i === index ? ' active' : ''}" onclick="goToModalImage(${i})"></span>`).join('');
+}
+
+function closeCarouselImageModal() {
+    document.getElementById('carouselImageModal').style.display = 'none';
+    document.body.style.overflow = 'auto';
+}
+
+function prevModalImage() {
+    let idx = currentModalIndex - 1;
+    if (idx < 0) idx = currentModalImages.length - 1;
+    goToModalImage(idx);
+}
+function nextModalImage() {
+    let idx = currentModalIndex + 1;
+    if (idx >= currentModalImages.length) idx = 0;
+    goToModalImage(idx);
+}
+function goToModalImage(idx) {
+    currentModalIndex = idx;
+    const img = document.getElementById('carouselImageModalImg');
+    img.src = currentModalImages[idx];
+    img.classList.remove('zoomed');
+    // dots
+    const dots = document.getElementById('carouselImageModalDots');
+    dots.querySelectorAll('.carousel-dot').forEach((dot, i) => {
+        dot.classList.toggle('active', i === idx);
+    });
+}
+// Zoom
+function toggleZoomModalImage() {
+    const img = document.getElementById('carouselImageModalImg');
+    img.classList.toggle('zoomed');
+}
+// Навешиваем обработчики после загрузки DOM
+window.addEventListener('DOMContentLoaded', function() {
+    document.getElementById('carouselImageModalClose').onclick = closeCarouselImageModal;
+    document.getElementById('carouselImageModalPrev').onclick = prevModalImage;
+    document.getElementById('carouselImageModalNext').onclick = nextModalImage;
+    document.getElementById('carouselImageModalImg').onclick = toggleZoomModalImage;
+    document.getElementById('carouselImageModal').addEventListener('click', function(e) {
+        if (e.target === this) closeCarouselImageModal();
+    });
+    document.addEventListener('keydown', function(e) {
+        if (document.getElementById('carouselImageModal').style.display !== 'none') {
+            if (e.key === 'Escape') closeCarouselImageModal();
+            if (e.key === 'ArrowLeft') prevModalImage();
+            if (e.key === 'ArrowRight') nextModalImage();
+        }
+    });
+});
+
+// --- Клик по картинке в карусели ---
+document.addEventListener('click', function(e) {
+    if (e.target.closest('.carousel-slide img')) {
+        const imgEl = e.target.closest('.carousel-slide img');
+        const wrapper = imgEl.closest('.carousel-wrapper');
+        const slides = Array.from(wrapper.querySelectorAll('.carousel-slide img'));
+        const images = slides.map(img => img.src);
+        const idx = slides.indexOf(imgEl);
+        openCarouselImageModal(images, idx);
+    }
+});
 
