@@ -29,6 +29,33 @@ def init_database():
         # Актуальные бани с Avito (теперь с несколькими картинками)
         baths = [
             Bathhouse(
+                name='Баня Викинг',
+                description='В наличии. 6 метров на 2,4 метра. Премиум баня Викинг с уникальным дизайном и максимальным комфортом.',
+                price=710000,
+                image=json.dumps([
+                    'image/viking/photo_2025-08-07_23-57-23.jpg',
+                    'image/viking/photo_2025-08-07_23-57-24.jpg',
+                    'image/viking/photo_2025-08-07_23-57-25.jpg',
+                    'image/viking/photo_2025-08-07_23-57-25 (2).jpg',
+                    'image/viking/photo_2025-08-07_23-57-26.jpg',
+                    'image/viking/photo_2025-08-07_23-57-27.jpg',
+                    'image/viking/photo_2025-08-07_23-57-28.jpg',
+                    'image/viking/photo_2025-08-07_23-57-28 (2).jpg',
+                    'image/viking/photo_2025-08-07_23-57-30.jpg',
+                    'image/viking/photo_2025-08-07_23-57-31.jpg',
+                    'image/viking/photo_2025-08-07_23-57-32.jpg',
+                    'image/viking/photo_2025-08-07_23-57-33.jpg',
+                    'image/viking/photo_2025-08-07_23-57-34.jpg',
+                    'image/viking/photo_2025-08-07_23-57-37.jpg',
+                    'image/viking/photo_2025-08-07_23-57-38.jpg',
+                    'image/viking/photo_2025-08-07_23-57-39.jpg',
+                    'image/viking/photo_2025-08-07_23-57-40.jpg',
+                ], ensure_ascii=False),
+                tags='баня,викинг,премиум',
+                specs=json.dumps(['6 метров', '2,4 метра', 'Премиум качество'], ensure_ascii=False),
+                features=json.dumps(['Уникальный дизайн', 'Максимальный комфорт', 'В наличии'], ensure_ascii=False)
+            ),
+            Bathhouse(
                 name='Баня Квадро 3 метра в НАЛИЧИИ',
                 description='Современная баня Квадро. Компактная, уютная, готова к установке.',
                 price=275000,
@@ -101,6 +128,7 @@ def init_database():
                 specs=json.dumps(['2 метра'], ensure_ascii=False),
                 features=json.dumps(['Компактность', 'Быстрый прогрев'], ensure_ascii=False)
             ),
+
         ]
         
         # Добавляем записи одну за другой с проверкой
