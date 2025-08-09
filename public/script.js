@@ -1,3 +1,77 @@
+// КЛИЕНТСКИЙ РОУТИНГ
+function initRouter() {
+    // Функция для перехода к секции и переключения вкладки
+    function navigateToSection(sectionId) {
+        // Используем существующую функцию switchTab
+        switchTab(sectionId);
+        
+        // Плавная прокрутка к секции
+        const section = document.getElementById(sectionId);
+        if (section) {
+            section.scrollIntoView({ behavior: 'smooth' });
+        }
+    }
+    
+    // Обработка изменения URL
+    function handleRoute() {
+        const path = window.location.pathname;
+        
+        switch(path) {
+            case '/':
+                navigateToSection('home');
+                break;
+            case '/catalog':
+                navigateToSection('catalog');
+                break;
+            case '/about':
+                navigateToSection('about');
+                break;
+            case '/gallery':
+                navigateToSection('gallery');
+                break;
+            case '/calculator':
+                navigateToSection('calculator');
+                break;
+            case '/contact':
+                navigateToSection('contact');
+                break;
+            case '/faq':
+                // Для FAQ оставляем как есть, так как это отдельная страница
+                break;
+            default:
+                // Если роут не найден, переходим на главную
+                if (path !== '/faq') {
+                    navigateToSection('home');
+                }
+        }
+    }
+    
+    // Обработка кликов по ссылкам навигации (для прямых ссылок)
+    document.addEventListener('click', (e) => {
+        if (e.target.classList.contains('nav-link')) {
+            const href = e.target.getAttribute('href');
+            
+            if (href === '/faq') {
+                // Для FAQ переходим на отдельную страницу
+                return; // Позволяем браузеру обработать переход
+            } else if (href.startsWith('/') && !e.target.hasAttribute('data-tab')) {
+                e.preventDefault();
+                const sectionId = href.replace('/', '') || 'home';
+                navigateToSection(sectionId);
+                
+                // Обновляем URL без перезагрузки страницы
+                window.history.pushState({}, '', href);
+            }
+        }
+    });
+    
+    // Обработка кнопки "Назад" в браузере
+    window.addEventListener('popstate', handleRoute);
+    
+    // Инициализация при загрузке страницы
+    handleRoute();
+}
+
 // КОНФИГУРАЦИЯ КАЛЬКУЛЯТОРА - ЗДЕСЬ МОЖНО МЕНЯТЬ ВСЕ ПОД СЕБЯ
 const CONFIG = {
     // Базовые цены на размеры бань
@@ -54,6 +128,11 @@ function switchTab(tabName) {
     const targetLink = document.querySelector(`[data-tab="${tabName}"]`);
     if (targetLink) {
         targetLink.classList.add('active');
+    }
+    
+    // Плавная прокрутка к секции
+    if (targetTab) {
+        targetTab.scrollIntoView({ behavior: 'smooth' });
     }
 }
 
@@ -561,6 +640,9 @@ function initBurgerMenu() {
 
 // Инициализация при загрузке страницы
 document.addEventListener('DOMContentLoaded', function() {
+    // Инициализируем роутер
+    initRouter();
+    
     initHeaderScroll();
     initBurgerMenu();
     // Привязываем обработчик к форме заказа из каталога
@@ -575,13 +657,17 @@ document.addEventListener('DOMContentLoaded', function() {
         orderForm.addEventListener('submit', handleOrderForm);
     }
     
-    // Обработчики навигации
-    const navLinks = document.querySelectorAll('.nav-link');
+    // Обработчики навигации (только для ссылок с data-tab)
+    const navLinks = document.querySelectorAll('.nav-link[data-tab]');
     navLinks.forEach(link => {
         link.addEventListener('click', function(e) {
             e.preventDefault();
             const tabName = this.getAttribute('data-tab');
             switchTab(tabName);
+            
+            // Обновляем URL в адресной строке
+            const path = tabName === 'home' ? '/' : `/${tabName}`;
+            window.history.pushState({}, '', path);
         });
     });
     
