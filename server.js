@@ -86,6 +86,37 @@ const corsOptions = {
 app.use(cors(corsOptions));
 
 app.use(express.json({ limit: '10mb' }));
+
+// Роутинг для основных страниц сайта (ДО статических файлов!)
+app.get('/', (req, res) => {
+    res.sendFile(path.join(__dirname, 'public', 'index.html'));
+});
+
+app.get('/faq', (req, res) => {
+    res.sendFile(path.join(__dirname, 'public', 'faq.html'));
+});
+
+app.get('/catalog', (req, res) => {
+    res.sendFile(path.join(__dirname, 'public', 'index.html'));
+});
+
+app.get('/about', (req, res) => {
+    res.sendFile(path.join(__dirname, 'public', 'index.html'));
+});
+
+app.get('/gallery', (req, res) => {
+    res.sendFile(path.join(__dirname, 'public', 'index.html'));
+});
+
+app.get('/calculator', (req, res) => {
+    res.sendFile(path.join(__dirname, 'public', 'index.html'));
+});
+
+app.get('/contact', (req, res) => {
+    res.sendFile(path.join(__dirname, 'public', 'index.html'));
+});
+
+// Статические файлы ПОСЛЕ роутинга
 app.use(express.static(path.join(__dirname, 'public'), {
     maxAge: 0,
     etag: false
@@ -124,6 +155,7 @@ app.use((req, res, next) => {
             duration: `${duration}ms`,
             ip: req.ip
         });
+
     });
     next();
 });
@@ -261,12 +293,36 @@ app.use('/api/*', (req, res) => {
     res.status(404).json({ error: 'API endpoint не найден' });
 });
 
+// Обработка 404 для страниц - отправляем index.html для SPA
+app.use('*', (req, res) => {
+    // Проверяем, является ли запрос к API
+    if (req.path.startsWith('/api/')) {
+        return res.status(404).json({ error: 'API endpoint не найден' });
+    }
+    
+    // Проверяем, является ли запрос к статическим файлам
+    if (req.path.includes('.')) {
+        return res.status(404).send('Файл не найден');
+    }
+    
+    // Для всех остальных запросов отправляем index.html (SPA подход)
+    console.log('404 - отправляем index.html для:', req.path);
+    res.sendFile(path.join(__dirname, 'public', 'index.html'));
+});
+
 // Обработка ошибок
 app.use((err, req, res, next) => {
     log('error', 'Ошибка сервера', { error: err.message, stack: err.stack });
-    res.status(500).json({ 
-        error: process.env.NODE_ENV === 'production' ? 'Внутренняя ошибка сервера' : err.message 
-    });
+    
+    // Если это API запрос, возвращаем JSON
+    if (req.path.startsWith('/api/')) {
+        return res.status(500).json({ 
+            error: process.env.NODE_ENV === 'production' ? 'Внутренняя ошибка сервера' : err.message 
+        });
+    }
+    
+    // Для страниц отправляем index.html
+    res.status(500).sendFile(path.join(__dirname, 'public', 'index.html'));
 });
 
 const PORT = process.env.PORT || 3000;
