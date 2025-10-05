@@ -53,12 +53,12 @@ def init_database():
                 ], ensure_ascii=False),
                 tags='баня,викинг,премиум',
                 specs=json.dumps(['6 метров', '2,4 метра', 'Премиум качество'], ensure_ascii=False),
-                features=json.dumps(['Уникальный дизайн', 'Максимальный комфорт', 'В наличии'], ensure_ascii=False)
+                features=json.dumps(['Уникальный дизайн', 'Максимальный комфорт', ], ensure_ascii=False)
             ),
             Bathhouse(
-                name='Баня Квадро 3 метра в НАЛИЧИИ',
+                name='Баня Квадро 3 метра',
                 description='Современная баня Квадро. Компактная, уютная, готова к установке.',
-                price=275000,
+                price=290000,
                 image=json.dumps([
                     'image/3x3/photo_2025-08-07_14-47-20.jpg',
                     'image/3x3/photo_2025-08-07_14-47-22.jpg',
