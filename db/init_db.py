@@ -58,7 +58,7 @@ def init_database():
             Bathhouse(
                 name='Баня Квадро 3 метра',
                 description='Современная баня Квадро. Компактная, уютная, готова к установке.',
-                price=290000,
+                price=280000,
                 image=json.dumps([
                     'image/3x3/photo_2025-08-07_14-47-20.jpg',
                     'image/3x3/photo_2025-08-07_14-47-22.jpg',
